@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
       // home: LoginScreen(),
       // home: SignUpScreen(),
       // home: ResetPassword(),
-      home: OtpScreen(),
+      // home: OtpScreen(),
       // home: CreateNewPassword(),
       // home: ResetPasswordForNum(),
-      // home: Home(),
+      home: Home(),
 
       debugShowCheckedModeBanner: false,
     );

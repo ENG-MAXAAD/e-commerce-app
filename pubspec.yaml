@@ -39,6 +39,9 @@ dependencies:
   pin_code_text_field: ^1.8.0
   pin_code_fields: ^8.0.1
   intl_phone_field: ^3.2.0
+  carousel_slider: ^5.0.0
+  google_fonts: ^6.2.1
+  flutter_countdown_timer: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +67,11 @@ flutter:
       - assets/search.png
       - assets/notification.png
       - assets/bag.png
+      - assets/banner1.png
+      - assets/p1.png
+      - assets/p2.png
+      - assets/flash.png
+      - assets/
 
 
 
