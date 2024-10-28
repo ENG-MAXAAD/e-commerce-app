@@ -7,6 +7,7 @@ import '../Components/BannerWidget.dart';
 import '../Components/CategoryWidget.dart';
 import '../Components/FlashSaleWidget.dart';
 import '../Components/PrdoductCardWidget.dart';
+import '../Components/ProductNewSales.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -83,6 +84,7 @@ class Home extends StatelessWidget {
                 options: CarouselOptions(
                   height: 200,
                   autoPlay: true,
+                  scrollDirection: Axis.vertical,
                   enlargeCenterPage: true,
                   viewportFraction: 0.9,
                 ),
@@ -91,23 +93,41 @@ class Home extends StatelessWidget {
               // Category Section
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Shop by Category",
-                        style: GoogleFonts.inter(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Shop by Category",
+                      style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text("View All"),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Text(
+                            "View All",
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff2563EB),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 12,
+                            color: Color(0xff2563EB),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: SizedBox(
@@ -116,7 +136,7 @@ class Home extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: [
                       CategoryIcon(
-                        title: 'kkk',
+                        title: 'Fashion',
                         imagePath: 'assets/fashion.png',
                         backgroundColor: Color(0xFFCCE1FD)!,
                       ),
@@ -144,24 +164,45 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              // Product List Section
+              //product Section
+              Gap(16),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       "Top Picks",
                       style: GoogleFonts.inter(
-                          fontSize: 16, fontWeight: FontWeight.w600),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: Text("View All"),
+                      child: Row(
+                        children: [
+                          Text(
+                            "View All",
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff2563EB),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 12,
+                            color: Color(0xff2563EB),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: SizedBox(
@@ -170,28 +211,122 @@ class Home extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: [
                       ProductCard(
-                          imageUrl: 'assets/p1.png',
-                          title: 'Ash Printed Half Sleeve',
-                          price: '\$68',
-                          discount: '10% OFF'),
-                      Gap(12),
-                      ProductCard(
-                          imageUrl: 'assets/p2.png',
-                          title: 'Ultra Slim Fit Shirt',
-                          price: '\$42',
-                          discount: '15% OFF'),
+                        imageUrl: 'assets/p1.png',
+                        title: 'Ash Printed Half Sleeve Hawaiian Shirt',
+                        price: '\$68',
+                        originalPrice: '\$80.25',
+                        discount: '15% OFF',
+                        rating: '4.8',
+                        reviewCount: '692',
+                      ),
                       Gap(8),
                       ProductCard(
-                          imageUrl: 'assets/flash.png',
-                          title: 'Maroon Casual Shirt',
-                          price: '\$63',
-                          discount: '20% OFF'),
+                        imageUrl: 'assets/p2.png',
+                        title: 'Ultra Slim Fit Full Sleeve Shirt',
+                        price: '\$42',
+                        originalPrice: '\$60.00',
+                        discount: '30% OFF',
+                        rating: '4.5',
+                        reviewCount: '320',
+                      ),
+                      Gap(8),
+                      ProductCard(
+                        imageUrl: 'assets/p2.png',
+                        title: 'Maroon Casual Shirt',
+                        price: '\$63',
+                        originalPrice: '\$75.00',
+                        discount: '20% OFF',
+                        rating: '4.6',
+                        reviewCount: '457',
+                      ),
                     ],
                   ),
                 ),
               ),
+
               // Flash Sale Banner
               FlashSaleBanner(),
+              //Product new Sales
+              // Gap(10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "New Arrivals",
+                      style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Text(
+                            "View All",
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff2563EB),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 12,
+                            color: Color(0xff2563EB),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: SizedBox(
+                  height: 260,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      ProductNewSales(
+                        imageUrl: 'assets/p1.png',
+                        title: 'Premium Slim Fit Beige Color Twill Pant',
+                        price: '\$102',
+                        originalPrice: '\$199',
+                        discount: '15% OFF',
+                        rating: '4.3',
+                        reviewCount: '41',
+                        isNew:
+                            true, // Show "New" tag only for the first product
+                      ),
+                      ProductNewSales(
+                        imageUrl: 'assets/p2.png',
+                        title: 'Adidas white sneakers for men',
+                        price: '\$68',
+                        originalPrice: '\$70.25',
+                        discount: '15% OFF',
+                        rating: '4.3',
+                        reviewCount: '41',
+                        isNew: false, // No tag for this product
+                      ),
+                      ProductNewSales(
+                        imageUrl: 'assets/p3.png',
+                        title: 'Adidas white sneakers for women',
+                        price: '\$58',
+                        originalPrice: '\$65.00',
+                        discount: '10% OFF',
+                        rating: '4.5',
+                        reviewCount: '100',
+                        isNew: false, // No tag for this product
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

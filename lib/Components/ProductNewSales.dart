@@ -1,11 +1,7 @@
-// Product Card Widget
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-class ProductCard extends StatelessWidget {
+class ProductNewSales extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String price;
@@ -13,8 +9,9 @@ class ProductCard extends StatelessWidget {
   final String originalPrice;
   final String rating;
   final String reviewCount;
+  final bool isNew; // New parameter to indicate if the product is new
 
-  const ProductCard({
+  const ProductNewSales({
     Key? key,
     required this.imageUrl,
     required this.title,
@@ -23,6 +20,7 @@ class ProductCard extends StatelessWidget {
     required this.originalPrice,
     required this.rating,
     required this.reviewCount,
+    this.isNew = false, // Default to false if not specified
   }) : super(key: key);
 
   @override
@@ -33,7 +31,7 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Image and Top Seller Tag
+          // Image and Tag (Top Seller or New)
           Stack(
             children: [
               ClipRRect(
@@ -45,26 +43,27 @@ class ProductCard extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              Positioned(
-                top: 8,
-                left: 8,
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Text(
-                    "Top Seller",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
+              if (isNew)
+                Positioned(
+                  top: 8,
+                  left: 8,
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Text(
+                      "New",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-              ),
+                )
             ],
           ),
           const SizedBox(height: 8),
