@@ -30,7 +30,7 @@ class FlashSaleBanner extends StatelessWidget {
             width: double.infinity,
             height: 200,
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.black.withOpacity(0.6),
               borderRadius: BorderRadius.circular(8),
             ),
           ),
@@ -39,19 +39,15 @@ class FlashSaleBanner extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Super Flash Sale \n 50% Off",
+                "Super Flash Sale\n50% Off",
                 style: GoogleFonts.grandstander(
-                  textStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.italic,
-                  ),
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w600,
                 ),
                 textAlign: TextAlign.center,
               ),
-
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               // Countdown Timer
               CountdownTimer(
                 endTime: endTime,
@@ -72,11 +68,11 @@ class FlashSaleBanner extends StatelessWidget {
                       FlashSaleTimerBox(
                           time: time.hours?.toString().padLeft(2, '0') ?? '00'),
                       const Text(" : ",
-                          style: TextStyle(color: Colors.white, fontSize: 24)),
+                          style: TextStyle(color: Colors.white, fontSize: 22)),
                       FlashSaleTimerBox(
                           time: time.min?.toString().padLeft(2, '0') ?? '00'),
                       const Text(" : ",
-                          style: TextStyle(color: Colors.white, fontSize: 24)),
+                          style: TextStyle(color: Colors.white, fontSize: 22)),
                       FlashSaleTimerBox(
                           time: time.sec?.toString().padLeft(2, '0') ?? '00'),
                     ],
@@ -100,17 +96,17 @@ class FlashSaleTimerBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(4),
+        color: Colors.white.withOpacity(0.2),
+        borderRadius: BorderRadius.circular(6),
       ),
       child: Text(
         time,
         style: GoogleFonts.inter(
           color: Colors.white,
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
         ),
         textAlign: TextAlign.center,
       ),

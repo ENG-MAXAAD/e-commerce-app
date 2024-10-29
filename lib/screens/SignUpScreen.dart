@@ -2,8 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'CustomTextField.dart';
+
+import 'login.dart'; // Import LoginScreen
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -37,7 +38,10 @@ class SignUpScreen extends StatelessWidget {
             foregroundColor: Colors.black, // Set color for icons and text
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(
+                    context); // Navigate back when back arrow is pressed
+              },
             ),
           ),
         ),
@@ -116,7 +120,6 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 32),
               // Sign Up Button
               SizedBox(
@@ -139,33 +142,37 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // const Spacer(),
-              // Login prompt
+              Gap(24),
+              // Login prompt with navigation
               Center(
-                child: TextButton(
-                  onPressed: () {
-                    // Define what happens when the button is pressed
-                  },
-                  child: Text.rich(
-                    TextSpan(
-                      text: "Already have an account yet? ",
-                      style: GoogleFonts.inter(
-                        color: const Color(0xFF4F5159),
-                        fontWeight: FontWeight.w400,
-                        fontSize: 15,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "Log in",
-                          style: GoogleFonts.inter(
-                            color: Color(
-                                0xFF2563EB), // Color for the "Log in" text
-                            fontWeight: FontWeight.w400,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
+                child: Text.rich(
+                  TextSpan(
+                    text: "Already have an account? ",
+                    style: GoogleFonts.inter(
+                      color: const Color(0xFF4F5159),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15,
                     ),
+                    children: [
+                      TextSpan(
+                        text: "Log in",
+                        style: GoogleFonts.inter(
+                          color:
+                              Color(0xFF2563EB), // Color for the "Log in" text
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginScreen(),
+                              ),
+                            );
+                          },
+                      ),
+                    ],
                   ),
                 ),
               ),

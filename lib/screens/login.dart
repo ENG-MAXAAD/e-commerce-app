@@ -2,8 +2,12 @@ import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:myapp_ecommerce/main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'CustomTextField.dart';
+import 'ResetPassword.dart';
+import 'SignUpScreen.dart';
+
+import 'home.dart'; // Import your HomeScreen here
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -11,14 +15,37 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Log In"),
-        backgroundColor: Colors.white,
-        elevation: 1.0,
-        foregroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56.0),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Color(0x0F4B5563),
+                offset: Offset(2, 2),
+                blurRadius: 12.0,
+              ),
+            ],
+          ),
+          child: AppBar(
+            title: Text(
+              'Log In',
+              style: GoogleFonts.inter(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            foregroundColor: Colors.black,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -29,8 +56,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                    height: 30), // Increased top spacing for a better layout
+                const SizedBox(height: 30),
                 // Email TextField
                 const CustomTextField(
                   hintText: 'Enter your email',
@@ -49,7 +75,14 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ResetPassword(),
+                          ),
+                        );
+                      },
                       child: const Text(
                         'Forgot Password?',
                         style: TextStyle(color: Colors.blue),
@@ -57,12 +90,18 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
-                // Login Button
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigate to HomeScreen when login button is pressed
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Home(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
@@ -77,7 +116,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Sign Up prompt
+                // Sign Up prompt with navigation
                 Center(
                   child: Text.rich(
                     TextSpan(
@@ -89,7 +128,12 @@ class LoginScreen extends StatelessWidget {
                           style: const TextStyle(color: Colors.blue),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              // Handle Sign Up tap
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignUpScreen(),
+                                ),
+                              );
                             },
                         ),
                       ],
@@ -111,33 +155,24 @@ class LoginScreen extends StatelessWidget {
                     Expanded(child: Divider(color: Colors.grey.shade400)),
                   ],
                 ),
-                const SizedBox(height: 20), // Added spacing after OR
+                const SizedBox(height: 20),
                 // Social login buttons
                 SocialLoginButton(
-                  imageUrl:
-                      'https://w7.pngwing.com/pngs/724/759/png-transparent-apple-logo-apple-computer-icons-apple-logo-heart-computer-logo-thumbnail.png', // Apple logo
+                  imageUrl: 'assets/iphone.png',
                   label: 'Continue with Apple',
-                  onPressed: () {
-                    // Handle Apple login
-                  },
+                  onPressed: () {},
                 ),
                 const SizedBox(height: 10),
                 SocialLoginButton(
-                  imageUrl:
-                      'https://www.wavetransit.com/wp-content/uploads/2021/08/Facebook-logo.png', // Facebook logo
+                  imageUrl: 'assets/f.png',
                   label: 'Continue with Facebook',
-                  onPressed: () {
-                    // Handle Facebook login
-                  },
+                  onPressed: () {},
                 ),
                 const SizedBox(height: 10),
                 SocialLoginButton(
-                  imageUrl:
-                      'https://cdn2.hubspot.net/hubfs/53/image8-2.jpg', // Google logo
+                  imageUrl: 'assets/google.png',
                   label: 'Continue with Google',
-                  onPressed: () {
-                    // Handle Google login
-                  },
+                  onPressed: () {},
                 ),
               ],
             ),
@@ -149,13 +184,13 @@ class LoginScreen extends StatelessWidget {
 }
 
 class SocialLoginButton extends StatelessWidget {
-  final String imageUrl; // Use imageUrl for network image
+  final String imageUrl;
   final String label;
   final VoidCallback onPressed;
 
   const SocialLoginButton({
     Key? key,
-    required this.imageUrl, // Keep the parameter name
+    required this.imageUrl,
     required this.label,
     required this.onPressed,
   }) : super(key: key);
@@ -166,11 +201,11 @@ class SocialLoginButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton.icon(
         onPressed: onPressed,
-        icon: Image.network(
-          imageUrl, // Load image from network
+        icon: Image.asset(
+          imageUrl,
           width: 24,
           height: 24,
-          fit: BoxFit.cover, // Ensures the image covers the space correctly
+          fit: BoxFit.cover,
         ),
         label: Text(label, style: const TextStyle(color: Colors.black)),
         style: ElevatedButton.styleFrom(

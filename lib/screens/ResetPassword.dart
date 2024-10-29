@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
@@ -9,17 +10,38 @@ class ResetPassword extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Reset Password',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-          ),
-          backgroundColor: Colors.white,
-          elevation: 1.0,
-          foregroundColor: Colors.black,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {},
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(56.0),
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0x0F4B5563), // 6% opacity gray shadow color
+                  offset: Offset(2, 2), // position of the shadow
+                  blurRadius: 12.0, // blur intensity
+                ),
+              ],
+            ),
+            child: AppBar(
+              title: Text(
+                'Reset Password',
+                style: GoogleFonts.inter(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              backgroundColor: Colors.white,
+              elevation: 0, // Remove AppBar default shadow
+              foregroundColor: Colors.black, // Set color for icons and text
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(
+                      context); // Navigate back when back arrow is pressed
+                },
+              ),
+            ),
           ),
         ),
         body: SingleChildScrollView(

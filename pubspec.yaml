@@ -42,6 +42,8 @@ dependencies:
   carousel_slider: ^5.0.0
   google_fonts: ^6.2.1
   flutter_countdown_timer: ^4.1.0
+  flutter_xlider: ^3.5.0
+  syncfusion_flutter_sliders: ^20.1.55 # Use the latest version from pub.dev
 
 dev_dependencies:
   flutter_test:
@@ -71,33 +73,48 @@ flutter:
       - assets/p1.png
       - assets/p2.png
       - assets/flash.png
-      - assets/
       - assets/p3.png
+      - assets/d1.jpg
+      - assets/d2.jpg
+      - assets/d3.png
+      - assets/share.png
+      - assets/arrow-left.png
+      - assets/Icon.png
+      - assets/th2.png
+      - assets/th3.png
+      - assets/th4.png
+      - assets/filter_icon.png
+      - assets/sort_icon.png
+      - assets/s3.jpg
+      - assets/f.png
+      - assets/iphone.png
+      - assets/google.png
+      - assets/Add.png
+      - assets/Minus.png
+      - assets/review1.png
+      - assets/review2.png
+      - assets/review3.png
+      - assets/sort.png
+      - assets/filter.png
+      - assets/close.png
 
 
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
 
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+
+
+#
+#
+#  fonts:
+#      - family: GrandsExtended
+#        fonts:
+#          - asset: asset/fonts/GrandsExtended-Regular.ttf
+#          - asset: asset/fonts/GrandsExtended-Bold.ttf
+#            weight: 700
+#          - asset: asset/fonts/GrandsExtended-Italic.ttf
+#            style: italic
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
