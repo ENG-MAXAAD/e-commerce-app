@@ -3,12 +3,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gap/gap.dart';
 import 'package:myapp_ecommerce/screens/productDetial.dart';
+import 'package:myapp_ecommerce/screens/searchScreen.dart';
+import 'package:myapp_ecommerce/screens/settungScreen.dart';
 
 import '../Components/CategoryWidget.dart';
 import '../Components/CustomCarousel.dart';
 import '../Components/FlashSaleWidget.dart';
 import '../Components/PrdoductCardWidget.dart';
 import '../Components/ProductNewSales.dart';
+import 'NotificationScreen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -41,48 +44,61 @@ class _HomeState extends State<Home> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Hello Sacky',
-            style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w500),
-          ),
-          backgroundColor: Color(0xffffffff),
-          foregroundColor: Colors.black,
-          leading: IconButton(
-            icon: Image.asset(
-              'assets/menu.png',
-              width: 24,
-              height: 24,
-            ),
-            onPressed: () {},
-          ),
-          actions: [
-            IconButton(
-              icon: Image.asset(
-                'assets/search.png',
-                width: 24,
-                height: 24,
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Image.asset(
-                'assets/notification.png',
-                width: 24,
-                height: 24,
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Image.asset(
-                'assets/bag.png',
-                width: 24,
-                height: 24,
-              ),
-              onPressed: () {},
-            ),
-          ],
-        ),
+        appBar: _selectedIndex == 0
+            ? AppBar(
+                title: Text(
+                  'Hello Sacky',
+                  style: GoogleFonts.inter(
+                      fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+                backgroundColor: Color(0xffffffff),
+                foregroundColor: Colors.black,
+                leading: IconButton(
+                  icon: Image.asset(
+                    'assets/menu.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  onPressed: () {},
+                ),
+                actions: [
+                  IconButton(
+                      icon: Image.asset(
+                        'assets/search.png',
+                        width: 24,
+                        height: 24,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SearchScreen()));
+                      }),
+                  IconButton(
+                    icon: Image.asset(
+                      'assets/notification.png',
+                      width: 24,
+                      height: 24,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NotificationScreen()),
+                      );
+                    },
+                  ),
+                  IconButton(
+                    icon: Image.asset(
+                      'assets/bag.png',
+                      width: 24,
+                      height: 24,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              )
+            : null, // Hide AppBar for other screens
         body: _screens[_selectedIndex], // Display the selected screen content
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -180,27 +196,27 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   CategoryIcon(
                     title: 'Fashion',
-                    imagePath: 'assets/fashion.png',
+                    imagePath: 'assets/fashion1.png',
                     backgroundColor: Color(0xFFCCE1FD),
                   ),
                   CategoryIcon(
                     title: 'Mockup',
-                    imagePath: 'assets/mockup.png',
+                    imagePath: 'assets/mockup1.png',
                     backgroundColor: Color(0xFFF3D5D5),
                   ),
                   CategoryIcon(
                     title: 'Beauty',
-                    imagePath: 'assets/beauty.png',
+                    imagePath: 'assets/beauty1.png',
                     backgroundColor: Colors.green[100]!,
                   ),
                   CategoryIcon(
                     title: 'Bags',
-                    imagePath: 'assets/bags.png',
+                    imagePath: 'assets/bags1.png',
                     backgroundColor: Colors.orange[100]!,
                   ),
                   CategoryIcon(
                     title: 'Sneakers',
-                    imagePath: 'assets/sneakers.png',
+                    imagePath: 'assets/sneakers1.png',
                     backgroundColor: Colors.blue[100]!,
                   ),
                 ],
@@ -363,14 +379,14 @@ class HomeScreen extends StatelessWidget {
                     returnsPolicy: 'Free returns within 30 days.',
                   ),
                   ProductNewSales(
-                    imageUrl: 'assets/p1.png',
+                    imageUrl: 'assets/p3.png',
                     title: 'Premium Slim Fit Beige Color Twill Pant',
-                    price: '\$102',
-                    originalPrice: '\$199',
+                    price: '\68',
+                    originalPrice: '\$70.25',
                     discount: '15% OFF',
                     rating: '4.3',
                     reviewCount: '41',
-                    isNew: false,
+                    isNew: true,
                     thumbnailImages: [
                       'assets/p1.png',
                       'assets/p2.png',
@@ -417,10 +433,10 @@ class WishlistScreen extends StatelessWidget {
     return Center(child: Text('Wishlist Screen'));
   }
 }
-
-class ProfileScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Profile Screen'));
-  }
-}
+//
+// class ProfileScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(child: Text('Profile Screen'));
+//   }
+// }

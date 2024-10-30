@@ -55,11 +55,148 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     });
   }
 
+  //ShareBottomSheet
+//ShareBottomSheet
+  void _showShareBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Share",
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              // Product Details
+              Row(
+                children: [
+                  // Product Image
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      widget.thumbnailImages.isNotEmpty
+                          ? widget.thumbnailImages[0]
+                          : 'assets/placeholder.png',
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  // Product Info
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.title,
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          Text(
+                            widget.price,
+                            style: GoogleFonts.inter(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            widget.originalPrice,
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              color: Colors.grey,
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              // Sharing Options
+              GridView(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  childAspectRatio: 1,
+                ),
+                children: [
+                  _buildShareOption(Icons.link, "Copy Link", Colors.blue),
+                  _buildShareOption(Icons.email, "Gmail", Colors.red),
+                  // _buildShareOption(Icons.whatsapp, "WhatsApp", Colors.green),
+                  _buildShareOption(
+                      Icons.drive_file_move, "Drive", Colors.orange),
+                  _buildShareOption(
+                      Icons.message, "Messages", Colors.blueAccent),
+                  _buildShareOption(
+                      Icons.linked_camera, "LinkedIn", Colors.blue[700]!),
+                  _buildShareOption(Icons.facebook, "Facebook", Colors.indigo),
+                  _buildShareOption(Icons.more_horiz, "More", Colors.grey),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+// Helper to create share options with enhanced icon colors
+  Widget _buildShareOption(IconData icon, String label, Color iconColor) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CircleAvatar(
+          backgroundColor: iconColor.withOpacity(0.2),
+          child: Icon(icon, color: iconColor),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          label,
+          style: GoogleFonts.inter(fontSize: 12, color: Colors.black),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffffffff),
+        backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         leading: IconButton(
           icon: Image.asset(
@@ -86,7 +223,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               width: 24,
               height: 24,
             ),
-            onPressed: () {},
+            onPressed: () {
+              _showShareBottomSheet(); // Corrected here
+            },
           ),
           IconButton(
             icon: Image.asset(
@@ -110,7 +249,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
-                      widget.thumbnailImages[0],
+                      widget.thumbnailImages.isNotEmpty
+                          ? widget.thumbnailImages[0]
+                          : 'assets/placeholder.png',
                       height: 300,
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -153,14 +294,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            RatingAndReviewsScreen(), // Your destination screen
+                        builder: (context) => RatingAndReviewsScreen(),
                       ),
                     );
                   },
-                  child: Text("${widget.reviewCount} Reviews",
-                      style: GoogleFonts.inter(
-                          fontSize: 12, color: const Color(0xff605F5F))),
+                  child: Text(
+                    "${widget.reviewCount} Reviews",
+                    style: GoogleFonts.inter(
+                        fontSize: 12, color: const Color(0xff605F5F)),
+                  ),
                 ),
               ],
             ),
@@ -379,9 +521,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             // Delivery and Shipping Section
             Divider(thickness: 1, color: Colors.grey.shade300),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-              ),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -436,7 +576,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
             ),
             Divider(thickness: 1, color: Colors.grey.shade300),
-            // You may Also  Like
             const Gap(16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 0),

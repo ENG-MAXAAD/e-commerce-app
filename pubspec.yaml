@@ -44,6 +44,8 @@ dependencies:
   flutter_countdown_timer: ^4.1.0
   flutter_xlider: ^3.5.0
   syncfusion_flutter_sliders: ^20.1.55 # Use the latest version from pub.dev
+  font_awesome_flutter: ^10.7.0
+  country_flags: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -65,38 +67,42 @@ flutter:
     
     
   assets:
-      - assets/menu.png
-      - assets/search.png
-      - assets/notification.png
-      - assets/bag.png
-      - assets/banner1.png
-      - assets/p1.png
-      - assets/p2.png
-      - assets/flash.png
-      - assets/p3.png
-      - assets/d1.jpg
-      - assets/d2.jpg
-      - assets/d3.png
-      - assets/share.png
-      - assets/arrow-left.png
-      - assets/Icon.png
-      - assets/th2.png
-      - assets/th3.png
-      - assets/th4.png
-      - assets/filter_icon.png
-      - assets/sort_icon.png
-      - assets/s3.jpg
-      - assets/f.png
-      - assets/iphone.png
-      - assets/google.png
-      - assets/Add.png
-      - assets/Minus.png
-      - assets/review1.png
-      - assets/review2.png
-      - assets/review3.png
-      - assets/sort.png
-      - assets/filter.png
-      - assets/close.png
+      - assets/
+#      - assets/search.png
+#      - assets/notification.png
+#      - assets/bag.png
+#      - assets/banner1.png
+#      - assets/p1.png
+#      - assets/p2.png
+#      - assets/flash.png
+#      - assets/p3.png
+#      - assets/d1.jpg
+#      - assets/d2.jpg
+#      - assets/d3.png
+#      - assets/share.png
+#      - assets/arrow-left.png
+#      - assets/Icon.png
+#      - assets/th2.png
+#      - assets/th3.png
+#      - assets/th4.png
+#      - assets/filter_icon.png
+#      - assets/sort_icon.png
+#      - assets/s3.jpg
+#      - assets/f.png
+#      - assets/iphone.png
+#      - assets/google.png
+#      - assets/Add.png
+#      - assets/Minus.png
+#      - assets/review1.png
+#      - assets/review2.png
+#      - assets/review3.png
+#      - assets/sort.png
+#      - assets/filter.png
+#      - assets/close.png
+#      - assets/onboard1.jpg
+#      - assets/onboard2.jpg
+#      - assets/onboard3.jpg
+#      - assets/Arrow-Right.png
 
 
 

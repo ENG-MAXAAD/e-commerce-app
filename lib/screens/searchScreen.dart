@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'SearchResultScreen.dart';
+
 class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          'Search',
-          style: TextStyle(
-            backgroundColor: Colors.white,
-            color: Colors.black54,
-            fontSize: 16,
-            fontWeight: FontWeight.normal,
-          ),
+        title: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Image.asset('assets/arrow-left.png'),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -35,7 +34,17 @@ class SearchScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.search, color: Colors.grey),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SearchResultScreen(),
+                        ),
+                      );
+                    },
+                    child: Icon(Icons.search, color: Colors.grey),
+                  ),
                   SizedBox(width: 8),
                   Expanded(
                     child: TextField(
@@ -49,7 +58,17 @@ class SearchScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Icon(Icons.tune, color: Colors.grey),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SearchResultScreen(),
+                        ),
+                      );
+                    },
+                    child: Icon(Icons.tune, color: Colors.grey),
+                  )
                 ],
               ),
             ),
