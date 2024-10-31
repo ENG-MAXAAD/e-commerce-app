@@ -19,6 +19,7 @@ import 'package:myapp_ecommerce/screens/productDetial.dart';
 import 'package:myapp_ecommerce/screens/resetPasswordForNumber.dart';
 import 'package:myapp_ecommerce/screens/searchScreen.dart';
 import 'package:myapp_ecommerce/screens/settungScreen.dart';
+import 'package:myapp_ecommerce/screens/splashScreen.dart';
 import 'package:myapp_ecommerce/screens/themeScreen.dart';
 
 void main() {
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       // home: SearchResultScreen(),
       // home: FilterTab(),
       // home: RatingAndReviewsScreen(),
-      home: OnboardingScreen(),
+      // home: OnboardingScreen(),
       // home: NotificationScreen(),
       // home: ProfileScreen(),
       // home: EditProfileScreen(),
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
       // home: NotificationSettingsScreen(),
       // home: LanguageSelectionScreen(),
       // home: TermsOfServiceScreen(),
+      home: SplashScreen(),
 
       debugShowCheckedModeBanner: false,
     );
