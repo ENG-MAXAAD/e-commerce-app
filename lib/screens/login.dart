@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'CustomTextField.dart';
 import 'ResetPassword.dart';
 import 'SignUpScreen.dart';
-
 import 'home.dart'; // Import your HomeScreen here
 
 class LoginScreen extends StatelessWidget {
@@ -15,6 +14,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(56.0),
         child: Container(
@@ -94,11 +94,20 @@ class LoginScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigate to HomeScreen when login button is pressed
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Home(),
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (BuildContext context) => SuccessBottomSheet(
+                          onLoginPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    HomeScreen(), // Replace with actual home screen
+                              ),
+                            );
+                          },
                         ),
                       );
                     },
@@ -179,6 +188,104 @@ class LoginScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+// Custom Bottom Sheet for Success Message
+class SuccessBottomSheet extends StatelessWidget {
+  final VoidCallback onLoginPressed;
+
+  const SuccessBottomSheet({Key? key, required this.onLoginPressed})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      clipBehavior: Clip.none,
+      alignment: Alignment.topCenter,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+          margin: const EdgeInsets.only(
+              top: 40), // Add margin to make room for the icon
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(24),
+              topRight: Radius.circular(24),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 50), // Space for the icon
+              // Welcome Message
+              Text(
+                "Sacky! Welcome Back",
+                style: GoogleFonts.inter(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xff1A1C1E),
+                ),
+              ),
+              const SizedBox(height: 14),
+              Text(
+                "Once again you login successfully into MedSync app",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xff7B7D82),
+                ),
+              ),
+              const SizedBox(height: 40),
+              // Login Button
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        // Checkmark Icon positioned outside the top of the bottom sheet
+        Positioned(
+            top: 1, // Position the icon outside the top of the bottom sheet
+            child: Container(
+              width: 91,
+              height: 91,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: CircleAvatar(
+                radius: 32,
+                backgroundColor: Color(0xff2563EB),
+                child: Image.asset(
+                  'assets/badge-check.png', // Path to your asset image
+                  color: Colors.white, // Apply a color overlay if needed
+                  // height: 38, // Set height (similar to size in Icon)
+                  // width: 38, // Set width if needed
+                ),
+              ),
+            )),
+      ],
     );
   }
 }

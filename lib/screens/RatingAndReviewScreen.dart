@@ -9,46 +9,63 @@ class RatingAndReviewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Rating & Reviews',
-          style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w500),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/arrow-left.png',
-            width: 24,
-            height: 24,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Home(), // Your destination screen
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56.0),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Color(0x0F4B5563), // 6% opacity gray shadow color
+                offset: Offset(2, 2), // Position of the shadow
+                blurRadius: 12.0, // Blur intensity
               ),
-            );
-          },
+            ],
+          ),
+          child: AppBar(
+            title: Text(
+              'Rating & Reviews',
+              style:
+                  GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+            backgroundColor: Colors.white,
+            elevation: 0, // Remove elevation to avoid double shadow
+            foregroundColor: Colors.black,
+            leading: IconButton(
+              icon: Image.asset(
+                'assets/arrow-left.png',
+                width: 24,
+                height: 24,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(), // Your destination screen
+                  ),
+                );
+              },
+            ),
+            actions: [
+              IconButton(
+                icon: Image.asset(
+                  'assets/search.png',
+                  width: 24,
+                  height: 24,
+                ),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Image.asset(
+                  'assets/bag.png',
+                  width: 24,
+                  height: 24,
+                ),
+                onPressed: () {},
+              ),
+            ],
+          ),
         ),
-        actions: [
-          IconButton(
-            icon: Image.asset(
-              'assets/search.png',
-              width: 24,
-              height: 24,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Image.asset(
-              'assets/bag.png',
-              width: 24,
-              height: 24,
-            ),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

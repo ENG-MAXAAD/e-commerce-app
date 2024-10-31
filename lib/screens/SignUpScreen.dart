@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp_ecommerce/screens/TermsOfServiceScreen.dart';
 import 'CustomTextField.dart';
 
 import 'login.dart'; // Import LoginScreen
@@ -96,6 +97,11 @@ class SignUpScreen extends StatelessWidget {
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   // Handle Terms of Service tap
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              TermsOfServiceScreen()));
                                 },
                             ),
                             TextSpan(

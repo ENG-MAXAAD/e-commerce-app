@@ -7,7 +7,9 @@ import 'package:myapp_ecommerce/screens/ResetPassword.dart';
 import 'package:myapp_ecommerce/screens/SearchResultScreen.dart';
 import 'package:myapp_ecommerce/screens/SignUpScreen.dart';
 import 'package:myapp_ecommerce/screens/TermsOfServiceScreen.dart';
+import 'package:myapp_ecommerce/screens/cartScreen.dart';
 import 'package:myapp_ecommerce/screens/changeScreen.dart';
+import 'package:myapp_ecommerce/screens/checkoutScreen.dart';
 import 'package:myapp_ecommerce/screens/createNewPassword.dart';
 import 'package:myapp_ecommerce/screens/editScreen.dart';
 import 'package:myapp_ecommerce/screens/filterPopUp.dart';
@@ -52,7 +54,9 @@ class MyApp extends StatelessWidget {
       // home: NotificationSettingsScreen(),
       // home: LanguageSelectionScreen(),
       // home: TermsOfServiceScreen(),
-      home: SplashScreen(),
+      // home: SplashScreen(),
+      // home: CartScreen(),
+      home: CheckoutScreen(),
 
       debugShowCheckedModeBanner: false,
     );

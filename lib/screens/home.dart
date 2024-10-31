@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gap/gap.dart';
+import 'package:myapp_ecommerce/screens/cartScreen.dart';
 import 'package:myapp_ecommerce/screens/productDetial.dart';
 import 'package:myapp_ecommerce/screens/searchScreen.dart';
 import 'package:myapp_ecommerce/screens/settungScreen.dart';
@@ -94,7 +95,10 @@ class _HomeState extends State<Home> {
                       width: 24,
                       height: 24,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (contex) => CartScreen()));
+                    },
                   ),
                 ],
               )

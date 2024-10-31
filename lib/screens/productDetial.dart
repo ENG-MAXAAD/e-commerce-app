@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp_ecommerce/screens/cartScreen.dart';
 
 import '../Components/ProductNewSales.dart';
 import '../Components/Thumbnail.dart';
 import 'RatingAndReviewScreen.dart';
+import 'checkoutScreen.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final String title;
@@ -233,7 +235,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               width: 24,
               height: 24,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (contex) => CartScreen()));
+            },
           ),
         ],
       ),
