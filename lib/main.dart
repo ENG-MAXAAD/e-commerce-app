@@ -54,9 +54,9 @@ class MyApp extends StatelessWidget {
       // home: NotificationSettingsScreen(),
       // home: LanguageSelectionScreen(),
       // home: TermsOfServiceScreen(),
-      // home: SplashScreen(),
+      home: SplashScreen(),
       // home: CartScreen(),
-      home: CheckoutScreen(),
+      // home: CheckoutScreen(),
 
       debugShowCheckedModeBanner: false,
     );
