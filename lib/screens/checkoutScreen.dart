@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Components/CustomSuceesBottom.dart';
 import 'home.dart';
 import 'login.dart';
 
@@ -326,18 +327,20 @@ class _CheckoutScreenState extends State<CheckoutScreen>
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (BuildContext context) {
-        return SuccessBottomSheet(
-          onLoginPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      Home()), // Replace Home with your destination screen
-            );
-          },
-        );
-      },
+      builder: (BuildContext context) => SuccessBottomSheet(
+        title: "Success!",
+        message: "Your checkout was successful! Thank you for your purchase.",
+        buttonText: "Proceed",
+        onButtonPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeScreen(),
+            ),
+          );
+        },
+        checkmarkImagePath: 'assets/message.png', // Custom image path
+      ),
     );
   }
 

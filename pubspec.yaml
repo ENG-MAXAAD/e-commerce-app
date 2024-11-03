@@ -46,6 +46,9 @@ dependencies:
   syncfusion_flutter_sliders: ^20.1.55 # Use the latest version from pub.dev
   font_awesome_flutter: ^10.7.0
   country_flags: ^3.0.0
+  flutter_switch: ^0.3.2
+  flutter_advanced_switch: ^3.1.0
+  u_credit_card: ^1.4.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +71,7 @@ flutter:
     
   assets:
       - assets/
+      - assets/flags/
 #      - assets/search.png
 #      - assets/notification.png
 #      - assets/bag.png

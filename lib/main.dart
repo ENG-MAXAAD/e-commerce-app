@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myapp_ecommerce/screens/AddCardScreen.dart';
+import 'package:myapp_ecommerce/screens/ChatAssistantScreen.dart';
+import 'package:myapp_ecommerce/screens/HelpSupportScreen.dart';
 import 'package:myapp_ecommerce/screens/LanguageSelectionScreen.dart';
+import 'package:myapp_ecommerce/screens/MyCardsScreen.dart';
 import 'package:myapp_ecommerce/screens/NotificationScreen.dart';
 import 'package:myapp_ecommerce/screens/NotificationSettingsScreen.dart';
 import 'package:myapp_ecommerce/screens/RatingAndReviewScreen.dart';
@@ -54,9 +58,14 @@ class MyApp extends StatelessWidget {
       // home: NotificationSettingsScreen(),
       // home: LanguageSelectionScreen(),
       // home: TermsOfServiceScreen(),
-      home: SplashScreen(),
+      // home: SplashScreen(),
       // home: CartScreen(),
       // home: CheckoutScreen(),
+      // home: HelpSupportScreen(),
+      // home: ThemeSelectionScreen(),
+      // home: MyCardsScreen(),
+      // home: AddNewCardScreen(),
+      home: ChatAssistantScreen(),
 
       debugShowCheckedModeBanner: false,
     );

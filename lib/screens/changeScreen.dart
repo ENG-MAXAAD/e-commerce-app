@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Components/CustomTextField.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   @override
@@ -48,168 +51,73 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 24),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 24),
 
-            // Old Password Field with Label
-            Text(
-              'Old Password',
-              style: GoogleFonts.inter(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: Colors.black54,
+              const SizedBox(height: 8),
+              CustomTextField(
+                hasSuffixIcon: true,
+                labelText: 'Old Password',
+                hintText: "Enter your password",
+                icon: Icons.lock_outline,
+                isPassword: !_isOldPasswordVisible,
               ),
-            ),
-            const SizedBox(height: 8),
-            CustomTextField(
-              hintText: "Enter your password",
-              icon: Icons.lock_outline,
-              isPassword: !_isOldPasswordVisible,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _isOldPasswordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off,
-                  color: Color(0xFFA7A8AC),
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isOldPasswordVisible = !_isOldPasswordVisible;
-                  });
-                },
-              ),
-            ),
-            const SizedBox(height: 16),
+              const SizedBox(height: 16),
 
-            // New Password Field with Label
-            Text(
-              'New Password',
-              style: GoogleFonts.inter(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: Colors.black54,
+              const SizedBox(height: 8),
+              CustomTextField(
+                hasSuffixIcon: true,
+                labelText: 'New Password',
+                hintText: "Enter your password",
+                icon: Icons.lock_outline,
+                isPassword: !_isNewPasswordVisible,
               ),
-            ),
-            const SizedBox(height: 8),
-            CustomTextField(
-              hintText: "Enter your password",
-              icon: Icons.lock_outline,
-              isPassword: !_isNewPasswordVisible,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _isNewPasswordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off,
-                  color: Color(0xFFA7A8AC),
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isNewPasswordVisible = !_isNewPasswordVisible;
-                  });
-                },
-              ),
-            ),
-            const SizedBox(height: 16),
+              const SizedBox(height: 16),
 
-            // Confirm New Password Field with Label
-            Text(
-              'Confirm New Password',
-              style: GoogleFonts.inter(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: Colors.black54,
+              // Confirm New Password Field with Label
+              const SizedBox(height: 8),
+              CustomTextField(
+                hasSuffixIcon: true,
+                labelText: 'Confirm New Password',
+                hintText: "Enter your password",
+                icon: Icons.lock_outline,
+                isPassword: !_isConfirmPasswordVisible,
               ),
-            ),
-            const SizedBox(height: 8),
-            CustomTextField(
-              hintText: "Enter your password",
-              icon: Icons.lock_outline,
-              isPassword: !_isConfirmPasswordVisible,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _isConfirmPasswordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off,
-                  color: Color(0xFFA7A8AC),
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-                  });
-                },
-              ),
-            ),
 
-            Gap(350),
+              Gap(300),
 
-            // Save Password Button
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle password save logic here
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff23262F),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+              // Save Password Button
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Handle password save logic here
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff23262F),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 14, horizontal: 120),
                   ),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 14, horizontal: 120),
-                ),
-                child: Text(
-                  "Save Password",
-                  style: GoogleFonts.inter(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
+                  child: Text(
+                    "Save Password",
+                    style: GoogleFonts.inter(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
-  }
-}
-
-class CustomTextField extends StatelessWidget {
-  final String hintText;
-  final IconData icon;
-  final bool isPassword;
-  final Widget? suffixIcon;
-
-  const CustomTextField({
-    Key? key,
-    required this.hintText,
-    required this.icon,
-    this.isPassword = false,
-    this.suffixIcon,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      obscureText: isPassword,
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: Color(0xFFA7A8AC)),
-        hintText: hintText,
-        hintStyle: GoogleFonts.inter(
-          color: const Color(0xFFA7A8AC),
-          fontWeight: FontWeight.w400,
-          fontSize: 16,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(48),
-          borderSide: BorderSide.none,
-        ),
-        filled: true,
-        fillColor: const Color(0xFFF9FAFB),
-        suffixIcon: suffixIcon,
       ),
     );
   }

@@ -6,21 +6,37 @@ class TermsOfServiceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text(
-          'Term Of Service',
-          style: GoogleFonts.inter(
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56.0),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Color(0x0F4B5563),
+                offset: Offset(2, 2),
+                blurRadius: 12.0,
+              ),
+            ],
           ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          child: AppBar(
+            title: Text(
+              'Term Of Service',
+              style: GoogleFonts.inter(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff23262F),
+              ),
+            ),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            foregroundColor: Colors.black,
+            centerTitle: false,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ),
         ),
       ),
       body: Padding(
@@ -28,17 +44,17 @@ class TermsOfServiceScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 16),
-            // Header Section
+            const SizedBox(height: 14),
+            // Title Section
             Text(
               "Privacy Policy",
-              style: GoogleFonts.inter(
+              style: GoogleFonts.urbanist(
                 fontSize: 22,
                 fontWeight: FontWeight.w700,
-                color: Color(0xff374151),
+                color: const Color(0xff374151),
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 16),
             Row(
               children: [
                 // Version Label
@@ -46,61 +62,62 @@ class TermsOfServiceScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Color(0xFFE0F7FA),
+                    color: const Color(0xFFE0F2F1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    "v1.0.0",
-                    style: GoogleFonts.inter(
+                    "v1.1.0",
+                    style: GoogleFonts.plusJakartaSans(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF374151),
+                      color: const Color(0xFF374151),
                     ),
                   ),
                 ),
                 const SizedBox(width: 8),
                 // Publish Date
                 Text(
-                  "Published on February, 2024",
-                  style: GoogleFonts.inter(
-                    fontSize: 14,
+                  "Published on ",
+                  style: GoogleFonts.urbanist(
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey[600],
+                    color: const Color(0xFF6B7280),
+                    height: 1.4,
                   ),
                 ),
                 Text(
                   "February, 2024",
-                  style: GoogleFonts.inter(
-                    fontSize: 14,
+                  style: GoogleFonts.urbanist(
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
-                    color: Colors.grey[600],
+                    color: const Color(0xFF374151),
+                    height: 1.4,
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 24),
             // Download Button
-            ElevatedButton.icon(
+            OutlinedButton.icon(
               onPressed: () {
                 // Action to download the PDF
               },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Color(0xFF0052CC),
-                backgroundColor: Color(0xFFF1F4F9),
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: Color(0xFF374151)),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                elevation: 0,
                 padding:
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
               ),
-              icon: Icon(Icons.file_download, color: Color(0xFF0052CC)),
+              icon:
+                  const Icon(Icons.download_rounded, color: Color(0xFF374151)),
               label: Text(
                 "Download as PDF",
-                style: GoogleFonts.inter(
+                style: GoogleFonts.plusJakartaSans(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xFF0052CC),
+                  color: const Color(0xff4B5563),
                 ),
               ),
             ),
@@ -113,10 +130,10 @@ class TermsOfServiceScreen extends StatelessWidget {
                   "When you use our app, we collect and use information only as necessary to provide our services and improve your experience. This includes information such as your name, address, and delivery details. We also use cookies and similar technologies to personalize your experience and track usage data.\n\n"
                   "We do not sell your information to third parties, and we only share it with our trusted partners and service providers when necessary to provide our services. We take reasonable steps to protect your information from unauthorized access, disclosure, or misuse.\n\n"
                   "If you have any questions or concerns about our privacy practices, please don't hesitate to contact us. Your trust and satisfaction are important to us, and we will do everything we can to address your concerns.",
-                  style: GoogleFonts.inter(
-                    fontSize: 14,
+                  style: GoogleFonts.urbanist(
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey[700],
+                    color: const Color(0xFF4F4F4F),
                     height: 1.5,
                   ),
                 ),

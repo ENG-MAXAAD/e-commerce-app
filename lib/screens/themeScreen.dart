@@ -46,7 +46,7 @@ class _ThemeSelectionScreenState extends State<ThemeSelectionScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -59,22 +59,25 @@ class _ThemeSelectionScreenState extends State<ThemeSelectionScreen> {
                 color: const Color(0xff393C44),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
             // Light Mode Option
             _buildThemeOption(
-              icon: Icons.wb_sunny_outlined,
+              assetPath:
+                  'assets/light_mode.png', // Replace with your asset path
               title: 'Light mode',
               value: 'Light mode',
             ),
+            const SizedBox(height: 24),
             // Dark Mode Option
             _buildThemeOption(
-              icon: Icons.nights_stay_outlined,
+              assetPath: 'assets/dark_mode.png', // Replace with your asset path
               title: 'Dark mode',
               value: 'Dark mode',
             ),
+            const SizedBox(height: 24),
             // Automatic Option
             _buildThemeOption(
-              icon: Icons.hourglass_empty_outlined,
+              assetPath: 'assets/auto_mode.png', // Replace with your asset path
               title: 'Automatic',
               value: 'Automatic',
             ),
@@ -85,16 +88,29 @@ class _ThemeSelectionScreenState extends State<ThemeSelectionScreen> {
   }
 
   Widget _buildThemeOption({
-    required IconData icon,
+    required String assetPath,
     required String title,
     required String value,
   }) {
     return ListTile(
       contentPadding: EdgeInsets.zero, // Aligns the icon with the title
-      leading: CircleAvatar(
-        radius: 22,
-        backgroundColor: Colors.grey.shade200,
-        child: Icon(icon, color: Colors.black),
+      leading: Container(
+        width: 44, // Adjusted to fit the border and avatar
+        height: 44, // Adjusted to fit the border and avatar
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+              color: Color(0xFFD3D4D5),
+              width: 1), // 1px border with specified color
+        ),
+        child: CircleAvatar(
+          backgroundColor: Colors.white,
+          child: Image.asset(
+            assetPath, // Replace with your asset path
+            width: 24, // Adjust size as needed
+            height: 24, // Adjust size as needed
+          ),
+        ),
       ),
       title: Text(
         title,

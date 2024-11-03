@@ -44,20 +44,19 @@ class _NotificationSettingsScreenState
             elevation: 0,
             foregroundColor: Colors.black,
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () => Navigator.pop(context),
             ),
           ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildSwitchTile(
-              title: 'Allow Notifications',
-              subtitle: 'For daily update you will get it',
+            _buildNotificationOption(
+              title: "Allow Notifications",
+              subtitle: "For daily update you will get it",
               value: allowNotifications,
               onChanged: (value) {
                 setState(() {
@@ -65,10 +64,9 @@ class _NotificationSettingsScreenState
                 });
               },
             ),
-            Divider(color: Colors.grey.shade300, height: 1),
-            _buildSwitchTile(
-              title: 'Email Notifications',
-              subtitle: 'For daily update you will get it',
+            _buildNotificationOption(
+              title: "Email Notifications",
+              subtitle: "For daily update you will get it",
               value: emailNotifications,
               onChanged: (value) {
                 setState(() {
@@ -76,10 +74,9 @@ class _NotificationSettingsScreenState
                 });
               },
             ),
-            Divider(color: Colors.grey.shade300, height: 1),
-            _buildSwitchTile(
-              title: 'Order Notifications',
-              subtitle: 'For daily update you will get it',
+            _buildNotificationOption(
+              title: "Order Notifications",
+              subtitle: "For daily update you will get it",
               value: orderNotifications,
               onChanged: (value) {
                 setState(() {
@@ -87,10 +84,9 @@ class _NotificationSettingsScreenState
                 });
               },
             ),
-            Divider(color: Colors.grey.shade300, height: 1),
-            _buildSwitchTile(
-              title: 'General Notifications',
-              subtitle: 'For daily update you will get it',
+            _buildNotificationOption(
+              title: "General Notifications",
+              subtitle: "For daily update you will get it",
               value: generalNotifications,
               onChanged: (value) {
                 setState(() {
@@ -104,40 +100,43 @@ class _NotificationSettingsScreenState
     );
   }
 
-  Widget _buildSwitchTile({
+  Widget _buildNotificationOption({
     required String title,
     required String subtitle,
     required bool value,
-    required ValueChanged<bool> onChanged,
+    required Function(bool) onChanged,
   }) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(vertical: 8),
-      title: Text(
-        title,
-        style: GoogleFonts.inter(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: Colors.black,
+    return Column(
+      children: [
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          title: Text(
+            title,
+            style: GoogleFonts.inter(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: Color(0xff393C44),
+            ),
+          ),
+          subtitle: Text(
+            subtitle,
+            style: GoogleFonts.inter(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFF8A8A8E),
+            ),
+          ),
+          trailing: Switch(
+            value: value,
+            onChanged: onChanged,
+            activeColor: Color(0xFF2563EB),
+          ),
         ),
-      ),
-      subtitle: Text(
-        subtitle,
-        style: GoogleFonts.inter(
-          fontSize: 12,
-          fontWeight: FontWeight.w400,
-          color: Color(0xff7D7D7D),
+        const Divider(
+          color: Color(0xFFD3D4D5), // Adjusting to the specified border color
+          height: 1,
         ),
-      ),
-      trailing: Transform.scale(
-        scale: 1.2, // Scale the switch for better visibility
-        child: Switch(
-          value: value,
-          onChanged: onChanged,
-          activeColor: Color(0xff2563EB),
-          inactiveThumbColor: Colors.grey.shade300,
-          inactiveTrackColor: Colors.grey.shade200,
-        ),
-      ),
+      ],
     );
   }
 }

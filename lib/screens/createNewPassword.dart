@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import '../Components/CustomTextField.dart';
 
-import 'CustomTextField.dart';
-
-class CreateNewPassword extends StatelessWidget {
+class CreateNewPassword extends StatefulWidget {
   const CreateNewPassword({super.key});
+
+  @override
+  _CreateNewPasswordState createState() => _CreateNewPasswordState();
+}
+
+class _CreateNewPasswordState extends State<CreateNewPassword> {
+  bool _isNewPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,7 @@ class CreateNewPassword extends StatelessWidget {
           foregroundColor: Colors.black,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () {},
+            onPressed: () => Navigator.pop(context),
           ),
         ),
         body: Container(
@@ -32,32 +39,41 @@ class CreateNewPassword extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Create New Password?',
+                  'Create New Password',
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
                 ),
                 const Gap(14),
                 const Text(
-                  'Enter your email or your phone number, we will send you a confirmation code',
+                  'Enter a new password and confirm it below.',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                 ),
-                Gap(36),
-                //Text Field
-                const CustomTextField(
-                  hintText: 'Enter your password',
+                const Gap(36),
+
+                // New Password Field
+                CustomTextField(
+                  hintText: 'Enter your new password',
+                  labelText: 'New Password',
                   icon: Icons.lock_outline,
                   isPassword: true,
                 ),
-                Gap(16),
-                const CustomTextField(
-                  hintText: 'Enter your password',
+                const Gap(16),
+
+                // Confirm Password Field
+                CustomTextField(
+                  hintText: 'Confirm your new password',
+                  labelText: 'Confirm Password',
                   icon: Icons.lock_outline,
                   isPassword: true,
                 ),
                 const Gap(24),
+
+                // Create Password Button
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Add password creation logic here
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(

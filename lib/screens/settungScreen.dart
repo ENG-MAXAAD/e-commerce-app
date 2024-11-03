@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ecommerce/screens/changeScreen.dart';
+import 'package:myapp_ecommerce/screens/login.dart';
 import 'package:myapp_ecommerce/screens/themeScreen.dart';
 
+import 'HelpSupportScreen.dart';
+import 'LanguageSelectionScreen.dart';
 import 'NotificationSettingsScreen.dart';
 import 'editScreen.dart';
 
@@ -85,7 +88,12 @@ class ProfileScreen extends StatelessWidget {
               context,
               icon: Icons.language_outlined,
               title: "Language",
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (contex) => LanguageSelectionScreen()));
+              },
             ),
             const SizedBox(height: 32),
             _buildSectionTitle("Support"),
@@ -93,7 +101,12 @@ class ProfileScreen extends StatelessWidget {
               context,
               icon: Icons.help_outline,
               title: "Help & Support",
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HelpSupportScreen()));
+              },
             ),
             _buildListItem(
               context,
@@ -104,7 +117,10 @@ class ProfileScreen extends StatelessWidget {
             Spacer(),
             Center(
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                },
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 135),
                   shape: RoundedRectangleBorder(

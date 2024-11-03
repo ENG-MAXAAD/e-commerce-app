@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Delay for 10 seconds and then navigate to the OnboardingScreen
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 15), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
