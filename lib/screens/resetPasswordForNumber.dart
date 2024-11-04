@@ -12,19 +12,35 @@ class ResetPasswordForNum extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Reset Password',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-          ),
-          backgroundColor: Colors.white,
-          elevation: 1.0,
-          foregroundColor: Colors.black,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(56.0),
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0x0F4B5563), // Equivalent to #4B55630F
+                  offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
+                  blurRadius: 12.0, // Matches the 12px blur radius
+                  spreadRadius: 0, // Matches the 0px spread
+                ),
+              ],
+            ),
+            child: AppBar(
+              title: const Text(
+                'Reset Password',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              backgroundColor: Colors.white,
+              elevation: 0,
+              foregroundColor: Colors.black,
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
           ),
         ),
         body: SingleChildScrollView(

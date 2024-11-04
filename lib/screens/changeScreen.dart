@@ -26,9 +26,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Color(0x0F4B5563),
-                offset: Offset(2, 2),
-                blurRadius: 12.0,
+                color: Color(0x0F4B5563), // Equivalent to #4B55630F
+                offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
+                blurRadius: 12.0, // Matches the 12px blur radius
+                spreadRadius: 0, // Matches the 0px spread
               ),
             ],
           ),

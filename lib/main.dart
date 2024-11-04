@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp_ecommerce/screens/AddCardScreen.dart';
 import 'package:myapp_ecommerce/screens/ChatAssistantScreen.dart';
+import 'package:myapp_ecommerce/screens/ChatScreen.dart';
 import 'package:myapp_ecommerce/screens/HelpSupportScreen.dart';
 import 'package:myapp_ecommerce/screens/LanguageSelectionScreen.dart';
 import 'package:myapp_ecommerce/screens/MyCardsScreen.dart';
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // home: LoginScreen(),
+      theme: ThemeData.light(),
+      home: LoginScreen(),
       // home: SignUpScreen(),
       // home: ResetPassword(),
       // home: OtpScreen(),
@@ -65,7 +67,8 @@ class MyApp extends StatelessWidget {
       // home: ThemeSelectionScreen(),
       // home: MyCardsScreen(),
       // home: AddNewCardScreen(),
-      home: ChatAssistantScreen(),
+      // home: ChatAssistantScreen(),
+      // home: ChatScreen(),
 
       debugShowCheckedModeBanner: false,
     );

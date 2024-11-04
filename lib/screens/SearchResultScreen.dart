@@ -8,45 +8,61 @@ class SearchResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Color(0xffffffff),
-        elevation: 0,
-        foregroundColor: Colors.black,
-        title: Text(
-          "Search Result",
-          style: GoogleFonts.inter(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56.0),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Color(0x0F4B5563), // Equivalent to #4B55630F
+                offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
+                blurRadius: 12.0, // Matches the 12px blur radius
+                spreadRadius: 0, // Matches the 0px spread
+              ),
+            ],
+          ),
+          child: AppBar(
+            backgroundColor: Color(0xffffffff),
+            elevation: 0,
+            foregroundColor: Colors.black,
+            title: Text(
+              "Search Result",
+              style: GoogleFonts.inter(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            leading: IconButton(
+              icon: Image.asset(
+                'assets/arrow-left.png',
+                width: 24,
+                height: 24,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            actions: [
+              IconButton(
+                icon: Image.asset(
+                  'assets/Icon.png',
+                  width: 24,
+                  height: 24,
+                ),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Image.asset(
+                  'assets/bag.png',
+                  width: 24,
+                  height: 24,
+                ),
+                onPressed: () {},
+              ),
+            ],
           ),
         ),
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/arrow-left.png',
-            width: 24,
-            height: 24,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: Image.asset(
-              'assets/Icon.png',
-              width: 24,
-              height: 24,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Image.asset(
-              'assets/bag.png',
-              width: 24,
-              height: 24,
-            ),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),

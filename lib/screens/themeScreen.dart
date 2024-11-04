@@ -20,9 +20,10 @@ class _ThemeSelectionScreenState extends State<ThemeSelectionScreen> {
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Color(0x0F4B5563), // Shadow color with slight opacity
-                offset: Offset(2, 2), // Shadow position
-                blurRadius: 12.0, // Blur effect
+                color: Color(0x0F4B5563), // Equivalent to #4B55630F
+                offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
+                blurRadius: 12.0, // Matches the 12px blur radius
+                spreadRadius: 0, // Matches the 0px spread
               ),
             ],
           ),

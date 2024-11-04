@@ -19,9 +19,10 @@ class OtpScreen extends StatelessWidget {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Color(0x0F4B5563), // 6% opacity gray shadow color
-                  offset: Offset(2, 2), // position of the shadow
-                  blurRadius: 12.0, // blur intensity
+                  color: Color(0x0F4B5563), // Equivalent to #4B55630F
+                  offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
+                  blurRadius: 12.0, // Matches the 12px blur radius
+                  spreadRadius: 0, // Matches the 0px spread
                 ),
               ],
             ),

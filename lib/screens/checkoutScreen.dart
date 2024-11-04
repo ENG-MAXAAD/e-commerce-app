@@ -332,10 +332,10 @@ class _CheckoutScreenState extends State<CheckoutScreen>
         message: "Your checkout was successful! Thank you for your purchase.",
         buttonText: "Proceed",
         onButtonPressed: () {
-          Navigator.pushReplacement(
+          Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => HomeScreen(),
+              builder: (context) => Home(),
             ),
           );
         },

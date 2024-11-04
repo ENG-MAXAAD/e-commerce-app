@@ -14,25 +14,39 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text(
-          'Settings',
-          style: GoogleFonts.inter(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      // appBar: PreferredSize(
+      //   preferredSize: const Size.fromHeight(56.0),
+      //   child: Container(
+      //     decoration: const BoxDecoration(
+      //       color: Colors.white,
+      //       boxShadow: [
+      //         BoxShadow(
+      //           color: Color(0x0F4B5563), // Equivalent to #4B55630F
+      //           offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
+      //           blurRadius: 12.0, // Matches the 12px blur radius
+      //           spreadRadius: 0, // Matches the 0px spread
+      //         ),
+      //       ],
+      //     ),
+      //     child: AppBar(
+      //       title: const Text(
+      //         'Settings',
+      //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+      //       ),
+      //       backgroundColor: Colors.white,
+      //       elevation: 0,
+      //       foregroundColor: Colors.black,
+      //       leading: IconButton(
+      //         icon: const Icon(Icons.arrow_back),
+      //         onPressed: () {
+      //           Navigator.pop(context);
+      //         },
+      //       ),
+      //     ),
+      //   ),
+      // ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 22),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -95,7 +109,6 @@ class ProfileScreen extends StatelessWidget {
                         builder: (contex) => LanguageSelectionScreen()));
               },
             ),
-            const SizedBox(height: 32),
             _buildSectionTitle("Support"),
             _buildListItem(
               context,
@@ -114,31 +127,35 @@ class ProfileScreen extends StatelessWidget {
               title: "About Us",
               onTap: () {},
             ),
-            Spacer(),
-            Center(
-              child: OutlinedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
-                },
-                style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 135),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+            // Spacer(),
+            Expanded(
+              child: Center(
+                child: OutlinedButton(
+                  onLongPress: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  },
+                  style: OutlinedButton.styleFrom(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 18, horizontal: 157),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    side: BorderSide(color: Color(0xffE53935), width: 1),
                   ),
-                  side: BorderSide(color: Colors.red, width: 1.5),
-                ),
-                child: Text(
-                  "Log Out",
-                  style: GoogleFonts.inter(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                  onPressed: () {},
+                  child: Text(
+                    "Log Out",
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xffE53935),
+                    ),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 70),
           ],
         ),
       ),
@@ -167,8 +184,21 @@ class ProfileScreen extends StatelessWidget {
   }) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: Colors.grey.shade200,
-        child: Icon(icon, color: Colors.black),
+        backgroundColor: Colors.white, // Transparent background
+        radius: 24, // Adjust the size as needed
+        child: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+                color: Color(0xFFD3D4D5), width: 1), // 1px #D3D4D5 border
+          ),
+          padding: EdgeInsets.all(8), // Optional: Adjust padding as needed
+          child: Icon(
+            icon, // Use the icon passed as a parameter
+            color: Color(0xff393C44),
+            size: 24, // Adjust size as needed
+          ),
+        ),
       ),
       title: Text(
         title,

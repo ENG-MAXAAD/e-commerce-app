@@ -20,9 +20,10 @@ class _ChatAssistantScreenState extends State<ChatAssistantScreen> {
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Color(0x0F4B5563),
-                offset: Offset(2, 2),
-                blurRadius: 12.0,
+                color: Color(0x0F4B5563), // Equivalent to #4B55630F
+                offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
+                blurRadius: 12.0, // Matches the 12px blur radius
+                spreadRadius: 0, // Matches the 0px spread
               ),
             ],
           ),
@@ -43,27 +44,30 @@ class _ChatAssistantScreenState extends State<ChatAssistantScreen> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                _buildAssistantMessage("Hi Mahmoudul, I'm Alex 😎"),
-                _buildAssistantMessage(
-                    "I'm here to help your personal finance stuff easier 💰"),
-                _buildAssistantMessage("So, what can I help?"),
-                _buildUserMessage("How to spend less?"),
-                _buildAssistantMessage("I can help you with that"),
-                _buildImageMessage(),
-                _buildAssistantMessage(
-                    "A smart debit and credit card that can help save more money! 🪪"),
-                _buildButtonMessage("More info 👀"),
-              ],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 12),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.all(16),
+                children: [
+                  _buildAssistantMessage("Hi Mahmoudul, I'm Alex 😎"),
+                  _buildAssistantMessage(
+                      "I'm here to help your personal finance stuff easier 💰"),
+                  _buildAssistantMessage("So, what can I help?"),
+                  _buildUserMessage("How to spend less?"),
+                  _buildAssistantMessage("I can help you with that"),
+                  _buildImageMessage(),
+                  _buildAssistantMessage(
+                      "A smart debit and credit card that can help save more money! 🪪"),
+                  _buildButtonMessage("More info 👀"),
+                ],
+              ),
             ),
-          ),
-          _buildMessageInput(),
-        ],
+            _buildMessageInput(),
+          ],
+        ),
       ),
     );
   }
@@ -76,7 +80,7 @@ class _ChatAssistantScreenState extends State<ChatAssistantScreen> {
             maxWidth:
                 MediaQuery.of(context).size.width * 0.75), // Limit max width
         margin: const EdgeInsets.only(bottom: 8),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         decoration: BoxDecoration(
           color: const Color(0xFFF9F9FA),
           borderRadius: BorderRadius.circular(12),
@@ -98,7 +102,7 @@ class _ChatAssistantScreenState extends State<ChatAssistantScreen> {
     return Align(
       alignment: Alignment.centerRight,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 8),
+        margin: const EdgeInsets.only(bottom: 22),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
           color: const Color(0xFF23262F),
