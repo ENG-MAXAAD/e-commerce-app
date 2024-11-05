@@ -55,20 +55,19 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 30),
+            // const SizedBox(height: 30),
             CustomTextField(
               hintText: 'Enter your email',
-              labelText: 'Email',
               icon: Icons.email_outlined,
             ),
             const SizedBox(height: 16),
             CustomTextField(
               hintText: 'Enter your password',
-              labelText: 'Password',
               icon: Icons.lock_outline,
+              hasSuffixIcon: true,
               isPassword: true,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 0),
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
@@ -127,7 +126,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             Center(
               child: Text.rich(
                 TextSpan(
@@ -158,16 +157,36 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 40),
-            Divider(
-              color: Colors.grey.shade400,
-              thickness: 1,
+            const SizedBox(height: 48),
+            Row(
+              children: [
+                Expanded(
+                  child: Divider(
+                    color: Color(0xffE9E9EA),
+                    thickness: 1,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    "OR",
+                    style: GoogleFonts.inter(
+                        color: Color(0xffD3D4D5),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Divider(
+                    color: Color(0xffE9E9EA),
+                    thickness: 1,
+                  ),
+                ),
+              ],
             ),
-            const Center(
-                child: Text("OR", style: TextStyle(color: Colors.grey))),
             const SizedBox(height: 24),
             SocialLoginButton(
-              imageUrl: 'assets/iphone.png',
+              imageUrl: 'assets/apple2.png',
               label: 'Continue with Apple',
               onPressed: () {},
             ),

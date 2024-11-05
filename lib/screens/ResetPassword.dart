@@ -11,6 +11,7 @@ class ResetPassword extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56.0),
           child: Container(
@@ -47,29 +48,55 @@ class ResetPassword extends StatelessWidget {
           ),
         ),
         body: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(28.0),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 24),
+            child: Container(
+              color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Forgot Your Password?',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+                    style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 24,
+                        color: Color(0xff393C44)),
                   ),
                   const Gap(14),
-                  const Text(
+                  Text(
                     'Enter your email or your phone number, we will send you a confirmation code',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                    style: GoogleFonts.inter(
+                        color: Color(0xff7B7D82),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
                   ),
                   const Gap(36),
                   TextFormField(
                     decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.email),
+                      prefixIcon: Image.asset('assets/envelope.png'),
                       hintText: 'Enter your email or phone number',
+                      hintStyle: GoogleFonts.inter(
+                        color: Color(0xff23262F),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      filled: true,
+                      fillColor: Color(0xFFF9FAFB), // Fill color
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(48),
+                        borderSide: BorderSide(
+                            color: Color(0xFFE5E7EB),
+                            width: 1), // Border color and width
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(48),
+                        borderSide:
+                            BorderSide(color: Color(0xFFE5E7EB), width: 1),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(48),
+                        borderSide:
+                            BorderSide(color: Color(0xFFE5E7EB), width: 1),
                       ),
                     ),
                   ),
@@ -88,7 +115,7 @@ class ResetPassword extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(50),
                         ),
                         padding: const EdgeInsets.symmetric(vertical: 16),
                       ),

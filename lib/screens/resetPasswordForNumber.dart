@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 import 'otp.dart';
@@ -12,6 +13,7 @@ class ResetPasswordForNum extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56.0),
           child: Container(
@@ -51,31 +53,64 @@ class ResetPasswordForNum extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Forgot Your Password?',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+                    style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 24,
+                        color: Color(0xff393C44)),
                   ),
                   const Gap(14),
-                  const Text(
+                  Text(
                     'Enter your email or your phone number, we will send you a confirmation code',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                    style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff7B7D82)),
                   ),
                   const Gap(24),
                   IntlPhoneField(
                     decoration: InputDecoration(
+                      fillColor: Color(0xffF4F6F9),
+                      filled: true,
                       hintText: 'Enter your phone number',
+                      hintStyle: TextStyle(
+                        color: Color(0xffA3A3A3),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(),
+                        borderRadius: BorderRadius.circular(24),
+                        borderSide: BorderSide.none,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24),
+                        borderSide: BorderSide.none,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24),
+                        borderSide: BorderSide.none,
                       ),
                     ),
+
                     initialCountryCode: 'US',
+                    dropdownIconPosition:
+                        IconPosition.trailing, // Moves dropdown to right
+                    dropdownIcon: Icon(Icons.arrow_drop_down,
+                        color: Colors.black), // Custom dropdown icon
+                    flagsButtonMargin: EdgeInsets.only(
+                        left: 8, right: 8), // Adds margin around flag
+                    // flagsButtonDecoration: BoxDecoration(
+                    //   shape: BoxShape.circle, // Makes the flag circular
+                    // ),
                     onChanged: (phone) {
                       print(phone
                           .completeNumber); // Full phone number including country code
                     },
                   ),
-                  const Gap(100),
+                  const Gap(118),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -94,9 +129,12 @@ class ResetPasswordForNum extends StatelessWidget {
                         ),
                         padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
-                      child: const Text(
+                      child: Text(
                         "Continue to Login",
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                        style: GoogleFonts.inter(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),

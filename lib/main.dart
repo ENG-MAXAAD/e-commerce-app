@@ -29,6 +29,7 @@ import 'package:myapp_ecommerce/screens/searchScreen.dart';
 import 'package:myapp_ecommerce/screens/settungScreen.dart';
 import 'package:myapp_ecommerce/screens/splashScreen.dart';
 import 'package:myapp_ecommerce/screens/themeScreen.dart';
+import 'package:myapp_ecommerce/screens/video_call_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       // home: LoginScreen(),
       // home: SignUpScreen(),
       // home: ResetPassword(),
-      // home: OtpScreen(),
+      home: OtpScreen(),
       // home: CreateNewPassword(),
       // home: ResetPasswordForNum(),
       // home: Home(),
@@ -70,7 +71,8 @@ class MyApp extends StatelessWidget {
       // home: AddNewCardScreen(),
       // home: ChatAssistantScreen(),
       // home: ChatScreen(),
-      home: IncomingCallScreen(),
+      // home: IncomingCallScreen(),
+      // home: VideoCallScreen(),
 
       debugShowCheckedModeBanner: false,
     );

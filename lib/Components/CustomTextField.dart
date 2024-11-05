@@ -70,11 +70,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
           decoration: InputDecoration(
             hintText: widget.hintText,
             hintStyle: GoogleFonts.inter(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: Color(
-                  0xffA7A8AC,
-                )),
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: Color(0xffA7A8AC),
+            ),
             prefixIcon: Icon(
               widget.icon,
               color: _isFocused ? const Color(0xff2563EB) : Colors.grey,
@@ -95,8 +94,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
             filled: true,
             fillColor: Color(0xFFF9FAFB),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(48),
+              borderSide: BorderSide(color: Colors.red, width: 1.0),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(48),
+              borderSide: BorderSide(color: Color(0xffE5E7EB), width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(48),
+              borderSide: BorderSide(color: Color(0xff2563EB), width: 1.0),
             ),
             contentPadding: const EdgeInsets.symmetric(vertical: 16),
           ),

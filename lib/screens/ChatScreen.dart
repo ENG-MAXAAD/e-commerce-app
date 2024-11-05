@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp_ecommerce/screens/IncomingCallScreen.dart';
+import 'package:myapp_ecommerce/screens/video_call_screen.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+  final bool showTimestamp;
+
+  const ChatScreen({Key? key, this.showTimestamp = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +41,18 @@ class ChatScreen extends StatelessWidget {
               children: [
                 Text(
                   'Esther Howard',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                     color: const Color(0xFF1A1C1E),
                   ),
                 ),
                 Text(
                   'Active now',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
-                    color: const Color(0xFF4CAF50),
+                    color: const Color(0xFF7B7D82),
                   ),
                 ),
               ],
@@ -58,11 +62,19 @@ class ChatScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Image.asset('assets/phone-call.png', width: 24, height: 24),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => IncomingCallScreen()));
+            },
           ),
           IconButton(
-            icon: Image.asset('assets/phone-call.png', width: 24, height: 24),
-            onPressed: () {},
+            icon: Image.asset('assets/video.png', width: 24, height: 24),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => VideoCallScreen()));
+            },
           ),
           const SizedBox(width: 8),
         ],
@@ -74,7 +86,7 @@ class ChatScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               children: [
                 _buildUserMessage("You did your job well!", "09:25 AM"),
-                _buildTimestamp("Today"),
+                if (showTimestamp) _buildTimestamp("Today"),
                 _buildReceiverMessage(
                   "Have a great working week!!",
                   "Esther Howard",
@@ -176,10 +188,10 @@ class ChatScreen extends StatelessWidget {
               children: [
                 if (showAvatar)
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 4),
+                    padding: const EdgeInsets.only(bottom: 8),
                     child: Text(
                       name,
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF1A1C1E),

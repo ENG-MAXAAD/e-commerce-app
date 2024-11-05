@@ -1,6 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:myapp_ecommerce/screens/login.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpScreen extends StatelessWidget {
@@ -11,7 +12,7 @@ class OtpScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // Wrapping AppBar in a Container to customize shadow effect
+        backgroundColor: Colors.white,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56.0),
           child: Container(
@@ -19,10 +20,10 @@ class OtpScreen extends StatelessWidget {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Color(0x0F4B5563), // Equivalent to #4B55630F
-                  offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
-                  blurRadius: 12.0, // Matches the 12px blur radius
-                  spreadRadius: 0, // Matches the 0px spread
+                  color: Color(0x0F4B5563),
+                  offset: Offset(0, 6),
+                  blurRadius: 12.0,
+                  spreadRadius: 0,
                 ),
               ],
             ),
@@ -32,7 +33,7 @@ class OtpScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
               backgroundColor: Colors.white,
-              elevation: 0, // Set AppBar elevation to 0 to avoid double shadow
+              elevation: 0,
               foregroundColor: Colors.black,
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
@@ -51,14 +52,22 @@ class OtpScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Enter Verification Code',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24,
+                      color: Color(0xff393C44),
+                    ),
                   ),
                   const Gap(14),
-                  const Text(
-                    "Please Enter The OTP Sent to +1 2345 678 4321",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  Text(
+                    "Please Enter The OTP Sent to \n +1 2345 678 4321",
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff7B7D82),
+                    ),
                   ),
                   const Gap(36),
                   PinCodeTextField(
@@ -67,26 +76,34 @@ class OtpScreen extends StatelessWidget {
                     onChanged: (value) {},
                     pinTheme: PinTheme(
                       shape: PinCodeFieldShape.box,
-                      borderRadius: BorderRadius.circular(5),
-                      fieldHeight: 40,
-                      fieldWidth: 40,
+                      borderRadius: BorderRadius.circular(12),
+                      fieldHeight: 56,
+                      fieldWidth: 56,
                       activeFillColor: Colors.white,
-                      inactiveFillColor: Colors.white,
+                      inactiveFillColor: Color(0xffEFF6FF),
                       selectedFillColor: Colors.white,
-                      activeColor: Colors.black,
-                      inactiveColor: Colors.grey,
-                      selectedColor: Colors.black,
+                      activeColor: Color(0xff2563EB), // Active border color
+                      inactiveColor: Colors.transparent,
+                      selectedColor: Color(0xff2563EB), // Selected border color
+                      borderWidth: 1.5, // Border thickness when active
                     ),
+                    textStyle: GoogleFonts.inter(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xff23262F),
+                      height: 1.2, // Adjust line height as needed
+                    ),
+                    cursorColor: Colors.black,
+                    animationType: AnimationType.fade,
+                    backgroundColor: Colors.white,
+                    enableActiveFill: true,
                   ),
                   const Gap(24),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen()));
+                        // Navigate to the next screen or perform OTP verification logic
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
@@ -95,21 +112,37 @@ class OtpScreen extends StatelessWidget {
                         ),
                         padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
-                      child: const Text(
+                      child: Text(
                         "Verify",
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                        style: GoogleFonts.inter(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
                       ),
                     ),
                   ),
                   const Gap(24),
                   Center(
-                    child: TextButton(
-                      onPressed: () {
-                        // Logic for resending OTP
-                      },
-                      child: const Text(
-                        "Didn't receive the code? Resend",
-                        style: TextStyle(fontSize: 14, color: Colors.blue),
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Didn't receive the code? ",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Resend",
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Color(0xff2563EB),
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                // Add resend logic here
+                              },
+                          ),
+                        ],
                       ),
                     ),
                   ),
