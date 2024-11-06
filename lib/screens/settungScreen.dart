@@ -195,7 +195,7 @@ class ProfileScreen extends StatelessWidget {
           padding: EdgeInsets.all(8), // Optional: Adjust padding as needed
           child: Icon(
             icon, // Use the icon passed as a parameter
-            color: Color(0xff393C44),
+            color: Color(0xff393C44).withOpacity(0.75),
             size: 24, // Adjust size as needed
           ),
         ),

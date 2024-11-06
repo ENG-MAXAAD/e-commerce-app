@@ -170,6 +170,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       fillColor: const Color(0xFFF9FAFB),
                     ),
                     initialCountryCode: 'US',
+                    dropdownIconPosition: IconPosition.trailing,
                     onChanged: (phone) {
                       print(phone.completeNumber);
                     },

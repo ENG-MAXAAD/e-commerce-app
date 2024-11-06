@@ -240,12 +240,15 @@ class SearchResultScreen extends StatelessWidget {
                   Text(
                     "Sort By",
                     style: GoogleFonts.inter(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff393C44)),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close),
+                    icon: const Icon(
+                      Icons.close,
+                      color: Color(0xff23262F),
+                    ),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -257,7 +260,9 @@ class SearchResultScreen extends StatelessWidget {
                 title: Text(
                   "Price - High to Low",
                   style: GoogleFonts.inter(
-                      fontSize: 14, fontWeight: FontWeight.w500),
+                      fontSize: 14,
+                      color: Color(0xff393C44),
+                      fontWeight: FontWeight.w500),
                 ),
                 onTap: () {
                   // Add sorting logic here
@@ -267,7 +272,9 @@ class SearchResultScreen extends StatelessWidget {
                 title: Text(
                   "Price - Low to High",
                   style: GoogleFonts.inter(
-                      fontSize: 14, fontWeight: FontWeight.w500),
+                      fontSize: 14,
+                      color: Color(0xff393C44),
+                      fontWeight: FontWeight.w500),
                 ),
                 onTap: () {
                   // Add sorting logic here
@@ -277,7 +284,9 @@ class SearchResultScreen extends StatelessWidget {
                 title: Text(
                   "Popularity",
                   style: GoogleFonts.inter(
-                      fontSize: 14, fontWeight: FontWeight.w500),
+                      fontSize: 14,
+                      color: Color(0xff393C44),
+                      fontWeight: FontWeight.w500),
                 ),
                 onTap: () {
                   // Add sorting logic here
@@ -287,7 +296,9 @@ class SearchResultScreen extends StatelessWidget {
                 title: Text(
                   "Discount",
                   style: GoogleFonts.inter(
-                      fontSize: 14, fontWeight: FontWeight.w500),
+                      fontSize: 14,
+                      color: Color(0xff393C44),
+                      fontWeight: FontWeight.w500),
                 ),
                 onTap: () {
                   // Add sorting logic here
@@ -297,7 +308,9 @@ class SearchResultScreen extends StatelessWidget {
                 title: Text(
                   "Customer Rating",
                   style: GoogleFonts.inter(
-                      fontSize: 14, fontWeight: FontWeight.w500),
+                      fontSize: 14,
+                      color: Color(0xff393C44),
+                      fontWeight: FontWeight.w500),
                 ),
                 onTap: () {
                   // Add sorting logic here

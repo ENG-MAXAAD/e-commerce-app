@@ -74,6 +74,7 @@ flutter:
       - assets/flags/
       - assets/call/
       - assets/cards/
+      - assets/product/
 #      - assets/search.png
 #      - assets/notification.png
 #      - assets/bag.png

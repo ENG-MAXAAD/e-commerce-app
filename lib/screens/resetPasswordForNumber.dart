@@ -110,7 +110,7 @@ class ResetPasswordForNum extends StatelessWidget {
                           .completeNumber); // Full phone number including country code
                     },
                   ),
-                  const Gap(118),
+                  const Gap(100),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(

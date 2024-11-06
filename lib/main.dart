@@ -18,7 +18,7 @@ import 'package:myapp_ecommerce/screens/changeScreen.dart';
 import 'package:myapp_ecommerce/screens/checkoutScreen.dart';
 import 'package:myapp_ecommerce/screens/createNewPassword.dart';
 import 'package:myapp_ecommerce/screens/editScreen.dart';
-import 'package:myapp_ecommerce/screens/filterPopUp.dart';
+import 'package:myapp_ecommerce/screens/filter_search.dart';
 import 'package:myapp_ecommerce/screens/home.dart';
 import 'package:myapp_ecommerce/screens/login.dart';
 import 'package:myapp_ecommerce/screens/onboardingScreen%5D.dart';
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       // home: LoginScreen(),
       // home: SignUpScreen(),
       // home: ResetPassword(),
-      home: OtpScreen(),
+      // home: OtpScreen(),
       // home: CreateNewPassword(),
       // home: ResetPasswordForNum(),
       // home: Home(),
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
       // home: SearchScreen(),
       // home: SearchResultScreen(),
       // home: FilterTab(),
-      // home: RatingAndReviewsScreen(),
+      home: RatingAndReviewsScreen(),
       // home: OnboardingScreen(),
       // home: NotificationScreen(),
       // home: ProfileScreen(),

@@ -287,17 +287,25 @@ class RatingAndReviewsScreen extends StatelessWidget {
                 children: [
                   Text("Filter",
                       style: GoogleFonts.inter(
-                          fontSize: 16, fontWeight: FontWeight.w600)),
+                          fontSize: 16,
+                          color: Color(0xff393C44),
+                          fontWeight: FontWeight.w500)),
                   IconButton(
                     icon: const Icon(Icons.close),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],
               ),
+              Divider(
+                thickness: 1,
+                color: Color(0xffE9E9EA),
+              ),
               const Gap(16),
               Text("Rating",
                   style: GoogleFonts.inter(
-                      fontSize: 14, fontWeight: FontWeight.w500)),
+                      fontSize: 16,
+                      color: Colors.red,
+                      fontWeight: FontWeight.w500)),
               const Gap(8),
               Wrap(
                 spacing: 8,
@@ -339,16 +347,28 @@ class RatingAndReviewsScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Sort By",
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: Text(
+                      "Sort By",
                       style: GoogleFonts.inter(
-                          fontSize: 16, fontWeight: FontWeight.w600)),
+                          fontSize: 16,
+                          color: Color(0xff393C44),
+                          fontWeight: FontWeight.w500),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
                   IconButton(
                     icon: const Icon(Icons.close),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],
               ),
-              const Gap(16),
+              Divider(
+                thickness: 1,
+                color: Color(0xffE9E9EA),
+              ),
+              const Gap(12),
               ...[
                 "Most Helpful",
                 "Most Useful",
@@ -357,7 +377,11 @@ class RatingAndReviewsScreen extends StatelessWidget {
                 "Recent"
               ].map((option) {
                 return ListTile(
-                  title: Text(option, style: GoogleFonts.inter(fontSize: 14)),
+                  title: Text(option,
+                      style: GoogleFonts.inter(
+                          fontSize: 14,
+                          color: Color(0xff393C44),
+                          fontWeight: FontWeight.w500)),
                   onTap: () {},
                 );
               }).toList(),

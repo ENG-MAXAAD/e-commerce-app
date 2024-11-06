@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'checkoutScreen.dart';
@@ -46,18 +47,18 @@ class CartScreen extends StatelessWidget {
             elevation: 0,
             foregroundColor: Colors.black,
             leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.black),
+              icon: Image.asset('assets/arrow-left.png', color: Colors.black),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
             actions: [
               IconButton(
-                icon: Icon(Icons.search, color: Colors.black),
+                icon: Image.asset('assets/search.png', color: Colors.black),
                 onPressed: () {},
               ),
               IconButton(
-                icon: Icon(Icons.shopping_bag_outlined, color: Colors.black),
+                icon: Image.asset('assets/bag.png', color: Colors.black),
                 onPressed: () {},
               ),
             ],
@@ -175,6 +176,7 @@ class CartScreen extends StatelessWidget {
                     Image.asset('assets/Paypal.png', height: 24),
                   ],
                 ),
+                Gap(28),
               ],
             ),
           ),
@@ -246,11 +248,11 @@ class CartItem extends StatelessWidget {
                   style: GoogleFonts.inter(
                       fontSize: 14, fontWeight: FontWeight.w600)),
               const SizedBox(height: 8),
+              IconButton(
+                icon: Image.asset('assets/trash.png', color: Colors.red),
+                onPressed: () {},
+              ),
             ],
-          ),
-          IconButton(
-            icon: Icon(Icons.delete_outline, color: Colors.red),
-            onPressed: () {},
           ),
         ],
       ),
@@ -318,18 +320,33 @@ class OrderSummary extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: Colors.grey.shade100,
+        color: Color(0xffF9F9F9),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            'Order Summary',
+            style: GoogleFonts.inter(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Color(0xff0C0D0D)),
+          ),
+          Gap(12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Subtotal',
-                  style: TextStyle(fontSize: 16, color: Colors.grey)),
-              Text('\$86.70', style: GoogleFonts.inter(fontSize: 16)),
+                  style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff5F6063))),
+              Text('\$86.70',
+                  style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff414244))),
             ],
           ),
           const SizedBox(height: 8),
@@ -337,8 +354,15 @@ class OrderSummary extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Delivery',
-                  style: TextStyle(fontSize: 16, color: Colors.grey)),
-              Text('\$9.90', style: GoogleFonts.inter(fontSize: 16)),
+                  style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff5F6063))),
+              Text('\$9.90',
+                  style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff414244))),
             ],
           ),
           const Divider(height: 24, thickness: 1),
@@ -347,10 +371,10 @@ class OrderSummary extends StatelessWidget {
             children: [
               Text('Total',
                   style: GoogleFonts.inter(
-                      fontSize: 18, fontWeight: FontWeight.bold)),
+                      fontSize: 14, fontWeight: FontWeight.w600)),
               Text('\$105.50',
                   style: GoogleFonts.inter(
-                      fontSize: 18, fontWeight: FontWeight.bold)),
+                      fontSize: 14, fontWeight: FontWeight.w600)),
             ],
           ),
         ],

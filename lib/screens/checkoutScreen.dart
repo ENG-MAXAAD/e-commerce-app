@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Components/CustomSuceesBottom.dart';
@@ -28,81 +29,133 @@ class _CheckoutScreenState extends State<CheckoutScreen>
   }
 
   Widget _buildShippingContent() {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Divider(
+            height: 18,
+            thickness: 1,
+            color: Color(0xFFE5E7EB),
+          ),
+          Gap(10),
+          Text(
+            'Enter your shipping address',
+            style: GoogleFonts.inter(
+              fontSize: 22,
+              fontWeight: FontWeight.w600,
+              color: Color(0xff393C44),
+            ),
+          ),
+          const SizedBox(height: 16),
+          _buildStyledTextField(
+              labelText: 'Full name',
+              hintText: 'Enter your full name',
+              isRequired: true),
+          const SizedBox(height: 16),
+          _buildStyledTextField(
+              labelText: 'Street address',
+              hintText: 'Enter your street address',
+              isRequired: true),
+          const SizedBox(height: 16),
+          _buildStyledTextField(
+              labelText: 'Apt / Suite / Other',
+              hintText: 'Enter your apt/suite',
+              isRequired: true),
+          const SizedBox(height: 16),
+          _buildStyledTextField(
+              labelText: 'City', hintText: 'Enter your city', isRequired: true),
+          const SizedBox(height: 16),
+          _buildStyledTextField(
+              labelText: 'Postal code',
+              hintText: 'Enter your postal code',
+              isRequired: true),
+          const SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 24),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  _tabController.animateTo(1); // Go to the next tab
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                  'Checkout',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Builds a styled TextField with specific design parameters.
+  Widget _buildStyledTextField({
+    required String labelText,
+    required String hintText,
+    bool isRequired = false,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Enter your shipping address',
+          isRequired ? '$labelText *' : labelText,
           style: GoogleFonts.inter(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+            fontSize: 14,
+            color: Color(0xff4F5159),
+            fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 16),
-        _buildStyledTextField(labelText: 'Full name', hintText: 'Placeholder'),
         const SizedBox(height: 8),
-        _buildStyledTextField(
-            labelText: 'Street address', hintText: 'Placeholder'),
-        const SizedBox(height: 8),
-        _buildStyledTextField(
-            labelText: 'Apt / Suite / Other', hintText: 'Placeholder'),
-        const SizedBox(height: 8),
-        _buildStyledTextField(labelText: 'City', hintText: 'Placeholder'),
-        const SizedBox(height: 8),
-        _buildStyledTextField(
-            labelText: 'Postal code', hintText: 'Placeholder'),
-        const Spacer(),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 24),
-          child: SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                _tabController.animateTo(1); // Go to the next tab
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
+        TextField(
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: GoogleFonts.inter(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFFA7A8AC),
+            ),
+            filled: true,
+            fillColor: Color(0xffF9FAFB),
+            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+              borderSide: BorderSide(
+                color: Color(0xFFE5E7EB),
+                width: 1,
               ),
-              child: const Text(
-                'Checkout',
-                style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+              borderSide: BorderSide(
+                color: Color(0xFFE5E7EB),
+                width: 1,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+              borderSide: BorderSide(
+                color: Color(0xFFE5E7EB),
+                width: 1,
               ),
             ),
           ),
+          style: GoogleFonts.inter(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: Colors.black,
+          ),
         ),
       ],
-    );
-  }
-
-  Widget _buildStyledTextField(
-      {required String labelText, required String hintText}) {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: labelText,
-        labelStyle: GoogleFonts.inter(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: Colors.black,
-        ),
-        hintText: hintText,
-        hintStyle: GoogleFonts.inter(
-          fontSize: 14,
-          color: Colors.grey.shade400,
-        ),
-        filled: true,
-        fillColor: Colors.grey.shade100,
-        contentPadding:
-            const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
-        ),
-      ),
     );
   }
 
@@ -113,15 +166,18 @@ class _CheckoutScreenState extends State<CheckoutScreen>
         Text(
           'Choose a payment method',
           style: GoogleFonts.inter(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+            fontSize: 22,
+            fontWeight: FontWeight.w600,
+            color: Color(0xff393C44),
           ),
         ),
         const SizedBox(height: 8),
         Text(
           'You will not be charged until you review this order on the next page.',
-          style: GoogleFonts.inter(fontSize: 14, color: Colors.black54),
+          style: GoogleFonts.inter(
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
+              color: Color(0xff5F6063)),
         ),
         const SizedBox(height: 24),
         Expanded(
@@ -187,16 +243,19 @@ class _CheckoutScreenState extends State<CheckoutScreen>
         Text(
           'Please confirm and submit your order',
           style: GoogleFonts.inter(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Color(0xff393C44),
           ),
         ),
         const SizedBox(height: 8),
         RichText(
           text: TextSpan(
             text: 'By clicking submit order, you agree to Fintory\'s ',
-            style: GoogleFonts.inter(fontSize: 14, color: Colors.black54),
+            style: GoogleFonts.inter(
+                fontSize: 13,
+                fontWeight: FontWeight.w400,
+                color: Color(0xff5F6063)),
             children: [
               TextSpan(
                 text: 'Terms of Use',
@@ -216,131 +275,290 @@ class _CheckoutScreenState extends State<CheckoutScreen>
         Container(
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.grey.shade100,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Color(0xFFE0E0E0)), // Light border
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Payment',
-                    style: GoogleFonts.inter(fontWeight: FontWeight.bold),
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Color(0xff0C0D0D),
+                    ),
                   ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Image.asset('assets/Mastercard.png', height: 24),
-                      const SizedBox(width: 8),
-                      Text('•••• 6714', style: GoogleFonts.inter()),
-                      const SizedBox(width: 8),
-                      Text('01/24',
-                          style: GoogleFonts.inter(color: Colors.black54)),
-                    ],
+                  TextButton(
+                    onPressed: () {
+                      // Handle edit payment action
+                    },
+                    child: Text(
+                      'Edit',
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff0BADA2),
+                      ),
+                    ),
                   ),
                 ],
               ),
-              TextButton(
-                onPressed: () {
-                  // Handle edit payment action
-                },
-                child: Text(
-                  'Edit',
-                  style: GoogleFonts.inter(color: Colors.blue),
-                ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Image.asset('assets/Mastercard.png', height: 24),
+                  const SizedBox(width: 8),
+                  Text(
+                    '•••• 6714',
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Color(0xff0C0D0D),
+                    ),
+                  ),
+                  Spacer(), // Pushes "01/24" to the far right
+                  Text(
+                    '01/24',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
         ),
         const SizedBox(height: 16),
+        //Detials
         Container(
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.grey.shade100,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Color(0xFFE0E0E0)), // Light border
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Shipping address',
-                    style: GoogleFonts.inter(fontWeight: FontWeight.bold),
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Color(0xff0C0D0D),
+                    ),
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Name: Luke Skywalker\n'
-                    'Street: 1313 Wolf Pen Road\n'
-                    'City: San Francisco, CA\n'
-                    'Postal code: 94107\n'
-                    'Country: United States',
-                    style: GoogleFonts.inter(),
+                  TextButton(
+                    onPressed: () {
+                      // Handle edit address action
+                    },
+                    child: Text(
+                      'Edit',
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff0BADA2),
+                      ),
+                    ),
                   ),
                 ],
               ),
-              TextButton(
-                onPressed: () {
-                  // Handle edit address action
-                },
-                child: Text(
-                  'Edit',
-                  style: GoogleFonts.inter(color: Colors.blue),
-                ),
+              const SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Name',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      color: Colors.black54,
+                    ),
+                  ),
+                  Text(
+                    'Luke Skywalker',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff414244),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Street',
+                    style: GoogleFonts.inter(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff5F6063),
+                    ),
+                  ),
+                  Text(
+                    '1313 Wolf Pen Road',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff414244),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'City',
+                    style: GoogleFonts.inter(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff5F6063),
+                    ),
+                  ),
+                  Text(
+                    'San Francisco, CA',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff414244),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Postal code',
+                    style: GoogleFonts.inter(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff5F6063),
+                    ),
+                  ),
+                  Text(
+                    '94107',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff414244),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Country',
+                    style: GoogleFonts.inter(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff5F6063),
+                    ),
+                  ),
+                  Text(
+                    'United States',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff414244),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
         ),
+
         const Spacer(),
         Padding(
           padding: const EdgeInsets.only(bottom: 24),
           child: SizedBox(
             width: double.infinity,
-            child: ElevatedButton.icon(
-              icon: Icon(Icons.arrow_forward, color: Colors.white),
-              onPressed: () {
-                _showSuccessBottomSheet(context); // Show success bottom sheet
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (BuildContext context) => SuccessBottomSheet(
+                    title: "Success!",
+                    message:
+                        "Your checkout was successful! Thank you for your purchase.",
+                    buttonText: "Proceed",
+                    onButtonPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Home(),
+                        ),
+                      );
+                    },
+                    checkmarkImagePath:
+                        'assets/message.png', // Custom image path
+                  ),
+                );
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+              child: Container(
+                height: 56, // Set the height for consistency
+                decoration: BoxDecoration(
+                  color: Color(0xFFEAF3FF), // Light blue background color
+                  borderRadius: BorderRadius.circular(12),
                 ),
-              ),
-              label: Text(
-                'Submit Order',
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // Left-aligned icon
+                    Positioned(
+                      left: 16, // Distance from the left edge
+                      child: Container(
+                        padding: EdgeInsets.all(
+                            10), // Padding inside the icon container
+                        decoration: BoxDecoration(
+                          color: Color(
+                              0xFF2C2C2E), // Dark background color for the icon
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Image.asset(
+                          'assets/arrow_icon.png', // Replace with the path to your arrow asset
+                          height: 24,
+                          width: 24,
+                        ),
+                      ),
+                    ),
+                    // Centered text
+                    Center(
+                      child: Text(
+                        'Submit Order',
+                        style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF23262F),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
       ],
-    );
-  }
-
-  void _showSuccessBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (BuildContext context) => SuccessBottomSheet(
-        title: "Success!",
-        message: "Your checkout was successful! Thank you for your purchase.",
-        buttonText: "Proceed",
-        onButtonPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Home(),
-            ),
-          );
-        },
-        checkmarkImagePath: 'assets/message.png', // Custom image path
-      ),
     );
   }
 

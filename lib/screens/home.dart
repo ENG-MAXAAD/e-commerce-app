@@ -359,7 +359,7 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 children: [
                   ProductNewSales(
-                    imageUrl: 'assets/p1.png',
+                    imageUrl: 'assets/product/p1.jpeg',
                     title: 'Premium Slim Fit Beige Color Twill Pant',
                     price: '\$102',
                     originalPrice: '\$199',
@@ -368,9 +368,9 @@ class HomeScreen extends StatelessWidget {
                     reviewCount: '41',
                     isNew: true,
                     thumbnailImages: [
-                      'assets/p1.png',
-                      'assets/p2.png',
-                      'assets/p3.png'
+                      'assets/product/pth1.png',
+                      'assets/product/pth2.png',
+                      'assets/product/pth3.png'
                     ],
                     description: 'This is a premium slim-fit pant...',
                     information: [

@@ -2,7 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp_ecommerce/screens/login.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+
+import 'home.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
@@ -46,7 +49,6 @@ class OtpScreen extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
               child: Column(
@@ -103,6 +105,10 @@ class OtpScreen extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (contex) => LoginScreen()));
                         // Navigate to the next screen or perform OTP verification logic
                       },
                       style: ElevatedButton.styleFrom(
@@ -126,14 +132,12 @@ class OtpScreen extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(
                         text: "Didn't receive the code? ",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black.withOpacity(0.5),
-                        ),
+                        style: GoogleFonts.inter(
+                            fontSize: 15, color: Color(0xff7B7D82)),
                         children: [
                           TextSpan(
                             text: "Resend",
-                            style: const TextStyle(
+                            style: GoogleFonts.inter(
                               fontSize: 14,
                               color: Color(0xff2563EB),
                             ),

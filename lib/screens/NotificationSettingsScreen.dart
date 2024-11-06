@@ -25,10 +25,10 @@ class _NotificationSettingsScreenState
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Color(0x0F4B5563), // Equivalent to #4B55630F
-                offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
-                blurRadius: 12.0, // Matches the 12px blur radius
-                spreadRadius: 0, // Matches the 0px spread
+                color: Color(0x0F4B5563),
+                offset: Offset(0, 6),
+                blurRadius: 12.0,
+                spreadRadius: 0,
               ),
             ],
           ),
@@ -57,7 +57,7 @@ class _NotificationSettingsScreenState
           children: [
             _buildNotificationOption(
               title: "Allow Notifications",
-              subtitle: "For daily update you will get it",
+              subtitle: "For daily updates, you will get it",
               value: allowNotifications,
               onChanged: (value) {
                 setState(() {
@@ -67,7 +67,7 @@ class _NotificationSettingsScreenState
             ),
             _buildNotificationOption(
               title: "Email Notifications",
-              subtitle: "For daily update you will get it",
+              subtitle: "For daily updates, you will get it",
               value: emailNotifications,
               onChanged: (value) {
                 setState(() {
@@ -77,7 +77,7 @@ class _NotificationSettingsScreenState
             ),
             _buildNotificationOption(
               title: "Order Notifications",
-              subtitle: "For daily update you will get it",
+              subtitle: "For daily updates, you will get it",
               value: orderNotifications,
               onChanged: (value) {
                 setState(() {
@@ -87,7 +87,7 @@ class _NotificationSettingsScreenState
             ),
             _buildNotificationOption(
               title: "General Notifications",
-              subtitle: "For daily update you will get it",
+              subtitle: "For daily updates, you will get it",
               value: generalNotifications,
               onChanged: (value) {
                 setState(() {
@@ -116,26 +116,33 @@ class _NotificationSettingsScreenState
             style: GoogleFonts.inter(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: Color(0xff393C44),
+              color: Color(0xff212121),
             ),
           ),
-          subtitle: Text(
-            subtitle,
-            style: GoogleFonts.inter(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: Color(0xFF8A8A8E),
+          subtitle: Padding(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Text(
+              subtitle,
+              style: GoogleFonts.inter(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFF212121),
+              ),
             ),
           ),
           trailing: Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: Color(0xFF2563EB),
+            activeColor: Colors.white,
+            inactiveThumbColor: Color(0xffD3D4D5),
+            inactiveTrackColor: Color(0xffE9E9EA),
+            activeTrackColor: Color(0xFF2563EB),
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
         ),
         const Divider(
-          color: Color(0xFFD3D4D5), // Adjusting to the specified border color
-          height: 1,
+          color: Color(0xFFD3D4D5),
+          height: 0.5,
         ),
       ],
     );

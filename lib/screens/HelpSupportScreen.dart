@@ -120,8 +120,8 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
                         ),
                         filled: true,
                         fillColor: Colors.transparent,
-                        prefixIcon:
-                            const Icon(Icons.search, color: Colors.grey),
+                        prefixIcon: Image.asset('assets/seach1.png',
+                            width: 18, height: 18),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                           borderSide: BorderSide.none,
