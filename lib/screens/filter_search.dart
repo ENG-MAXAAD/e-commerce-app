@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class FilterTab extends StatefulWidget {
+  const FilterTab({Key? key}) : super(key: key);
+
   @override
   _FilterTabState createState() => _FilterTabState();
 }
@@ -15,23 +18,23 @@ class _FilterTabState extends State<FilterTab> {
     "Shoes",
     "Laptops",
     "Butter",
-    "Clothes",
     "Potatoes",
-    "Accessories"
+    "Accessories",
+    "Clothes"
   ];
 
   List<String> categories = [
     "Shoes",
     "Laptops",
     "Butter",
-    "Clothes",
     "Potatoes",
-    "Accessories"
+    "Accessories",
+    "Clothes"
   ];
 
-  String selectedLocation = '';
-  String selectedCategory = '';
-  int selectedRating = 0;
+  String selectedLocation = 'Shoes';
+  String selectedCategory = 'Laptops';
+  int selectedRating = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +42,19 @@ class _FilterTabState extends State<FilterTab> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
         elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        leading: IconButton(
+          icon: const Icon(Icons.close, color: Colors.black, size: 24),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text(
-          "Filters",
+          'Filters',
           style: GoogleFonts.inter(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.black,
           ),
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.close),
-          onPressed: () => Navigator.pop(context),
         ),
         actions: [
           TextButton(
@@ -59,226 +62,245 @@ class _FilterTabState extends State<FilterTab> {
               setState(() {
                 minPrice = 230;
                 maxPrice = 1568;
-                selectedLocation = '';
-                selectedCategory = '';
-                selectedRating = 0;
+                selectedLocation = 'Shoes'; // Reset to default
+                selectedCategory = 'Laptops'; // Reset to default
+                selectedRating = 0; // Reset rating
               });
             },
             child: Text(
-              "Clear Filter",
+              'Clear Filter',
               style: GoogleFonts.inter(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: Color(0xffE53935),
+                color: const Color(0xFFFF3B30),
               ),
             ),
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Price Range Slider
-            const SizedBox(height: 16),
-            Text(
-              "Price Range",
-              style: GoogleFonts.inter(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Color(0xff393C44),
-              ),
-            ),
-            const SizedBox(height: 8),
-            SfRangeSlider(
-              min: 0,
-              max: 2000,
-              values: SfRangeValues(minPrice, maxPrice),
-              onChanged: (SfRangeValues values) {
-                setState(() {
-                  minPrice = values.start;
-                  maxPrice = values.end;
-                });
-              },
-              showLabels: true,
-              interval: 250,
-              showTicks: true,
-              activeColor: Color(0xff007AFF),
-              inactiveColor: Colors.grey[300],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '\$${minPrice.toStringAsFixed(0)}',
-                  style: GoogleFonts.inter(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff4F5159)),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Price Range Section
+              Text(
+                'Price Range',
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: const Color(0xff393C44),
                 ),
-                Text(
-                  '\$${maxPrice.toStringAsFixed(0)}',
-                  style: GoogleFonts.inter(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff4F5159)),
+              ),
+              const SizedBox(height: 24),
+              Stack(
+                children: [
+                  Center(
+                    child: Image.asset(
+                      'assets/Pagination.png', // Replace with your asset
+                      height: 56,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 36.0),
+                    child: SfRangeSlider(
+                      min: 0.0,
+                      max: 2000.0,
+                      values: SfRangeValues(minPrice, maxPrice),
+                      onChanged: (SfRangeValues values) {
+                        setState(() {
+                          minPrice = values.start;
+                          maxPrice = values.end;
+                        });
+                      },
+                      activeColor: const Color(0xFF2563EB),
+                      inactiveColor: const Color(0xFFE5E7EB),
+                      enableTooltip: false,
+                      minorTicksPerInterval: 1,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '\$${minPrice.toStringAsFixed(0)}',
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xff4F5159),
+                      ),
+                    ),
+                    Text(
+                      '\$${maxPrice.toStringAsFixed(0)}',
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xff4F5159),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(height: 16),
-
-            // Location Chips
-            Text(
-              "Location",
-              style: GoogleFonts.inter(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff393C44),
               ),
-            ),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 8,
-              children: locations.map((location) {
-                return ChoiceChip(
-                  label: Text(
-                    location,
-                    style: GoogleFonts.inter(
-                      fontSize: 12,
-                      color: selectedLocation == location
-                          ? Color(0xff2563EB)
-                          : Color(0xff4F5159),
-                    ),
-                  ),
-                  selected: selectedLocation == location,
-                  selectedColor: Colors.white,
-                  backgroundColor: Color(0xffF0F2F5),
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: selectedLocation == location
-                            ? Color(0xff2563EB)
-                            : Colors.transparent),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedLocation = selected ? location : '';
-                    });
-                  },
-                );
-              }).toList(),
-            ),
-            const SizedBox(height: 16),
+              const SizedBox(height: 24),
 
-            // Category Chips
-            Text(
-              "Category",
-              style: GoogleFonts.inter(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff393C44),
-              ),
-            ),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 8,
-              children: categories.map((category) {
-                return ChoiceChip(
-                  label: Text(
-                    category,
-                    style: GoogleFonts.inter(
-                      fontSize: 12,
-                      color: selectedCategory == category
-                          ? Color(0xff2563EB)
-                          : Color(0xff4F5159),
-                    ),
-                  ),
-                  selected: selectedCategory == category,
-                  selectedColor: Colors.white,
-                  backgroundColor: Color(0xffF0F2F5),
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: selectedCategory == category
-                            ? Color(0xff2563EB)
-                            : Colors.transparent),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedCategory = selected ? category : '';
-                    });
-                  },
-                );
-              }).toList(),
-            ),
-            const SizedBox(height: 16),
+              // Location Section
+              _buildSection('Location', locations, selectedLocation, (value) {
+                setState(() => selectedLocation = value);
+              }),
+              const SizedBox(height: 24),
 
-            // Rating Filter Chips
-            Text(
-              "Rating",
-              style: GoogleFonts.inter(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff393C44),
+              // Category Section
+              _buildSection('Category', categories, selectedCategory, (value) {
+                setState(() => selectedCategory = value);
+              }),
+              const SizedBox(height: 24),
+
+              // Rating Section
+              Text(
+                'Rating',
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: const Color(0xFF23262F),
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 8,
-              children: [1, 3, 4, 5].map((stars) {
-                return ChoiceChip(
-                  label: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(stars, (starIndex) {
-                      return Icon(
-                        Icons.star,
-                        color: Colors.orange,
-                        size: 16,
-                      );
-                    }),
-                  ),
-                  selected: selectedRating == stars,
-                  selectedColor: Color(0xffFDEFC3),
-                  backgroundColor: Color(0xffF0F2F5),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    side: BorderSide(
-                      color: selectedRating == stars
-                          ? Color(0xff2563EB)
-                          : Colors.transparent,
-                    ),
-                  ),
-                  onSelected: (bool selected) {
-                    setState(() {
-                      selectedRating = selected ? stars : 0;
-                    });
-                  },
-                );
-              }).toList(),
-            ),
-          ],
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 14, // Horizontal space between rating chips
+                runSpacing: 10, // Increased vertical space between rows
+                children: [1, 2, 3, 4, 5]
+                    .map((rating) => _buildRatingChip(rating))
+                    .toList(),
+              ),
+            ],
+          ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ElevatedButton(
-          onPressed: () {
-            // Apply filter action
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xff23262F),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(56),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border(
+            top: BorderSide(
+              color: Colors.grey.shade200,
+              width: 1,
             ),
-            padding: const EdgeInsets.symmetric(vertical: 16),
           ),
-          child: Text(
-            "Apply Filter",
-            style: GoogleFonts.inter(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
+        ),
+        child: SafeArea(
+          child: ElevatedButton(
+            onPressed: () {
+              // Apply filter logic
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF23262F),
+              foregroundColor: Colors.white,
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(48),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 16),
+            ),
+            child: Text(
+              'Apply Filter',
+              style: GoogleFonts.inter(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSection(
+    String title,
+    List<String> items,
+    String selectedItem,
+    Function(String) onSelected,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: GoogleFonts.inter(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: const Color(0xff393C44),
+          ),
+        ),
+        const SizedBox(height: 16),
+        Wrap(
+          spacing: 24,
+          runSpacing: 10,
+          children: items.map((item) {
+            final isSelected = selectedItem == item;
+            return GestureDetector(
+              onTap: () => onSelected(item),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  color: isSelected ? Colors.white : const Color(0xffF5FAFF),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: isSelected
+                        ? const Color(0xff2563EB)
+                        : Colors.transparent,
+                    width: 1,
+                  ),
+                ),
+                child: Text(
+                  item,
+                  style: GoogleFonts.inter(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: isSelected
+                        ? const Color(0xFF2563EB)
+                        : const Color(0xff4F5159),
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildRatingChip(int rating) {
+    final isSelected = selectedRating == rating;
+    return GestureDetector(
+      onTap: () => setState(() => selectedRating = isSelected ? 0 : rating),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xffF5FAFF) : const Color(0xFFF6F8FE),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: isSelected ? const Color(0xff2563EB) : Colors.transparent,
+            width: 1,
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: List.generate(
+            rating,
+            (index) => const Icon(
+              Icons.star_rounded,
+              size: 16,
+              color: Color(0xFFFFB800),
             ),
           ),
         ),

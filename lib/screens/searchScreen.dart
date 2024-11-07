@@ -37,8 +37,16 @@ class SearchScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Image.asset(
-                    'assets/seach1.png',
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (contex) => SearchResultScreen()));
+                    },
+                    child: Image.asset(
+                      'assets/seach1.png',
+                    ),
                   ),
                   const SizedBox(width: 8),
                   Expanded(

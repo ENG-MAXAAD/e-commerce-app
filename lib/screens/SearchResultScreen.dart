@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp_ecommerce/screens/filter_search.dart';
 import '../Components/ProductNewSales.dart';
+import '../modal/helpers/product_helper.dart';
 
 class SearchResultScreen extends StatelessWidget {
   @override
@@ -107,39 +109,19 @@ class SearchResultScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             // Product Grid with Two Columns
-            Expanded(
-              child: GridView.builder(
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // 2 products per row
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio:
-                      0.74, // Adjust to control product card height
-                ),
-                itemCount: 6, // Adjust this for the number of items
-                itemBuilder: (context, index) {
-                  return ProductNewSales(
-                    imageUrl:
-                        'assets/p${index % 3 + 1}.png', // Cycle through images
-                    title: 'Product Title Here',
-                    price: '\$102',
-                    originalPrice: '\$120',
-                    discount: '15% OFF',
-                    rating: '4.8',
-                    reviewCount: '41',
-                    isNew: index % 2 ==
-                        0, // Show "NEW" badge for alternating products
-                    thumbnailImages: [],
-                    description: '',
-                    information: [],
-                    productDetails: '',
-                    shippingInfo: '',
-                    returnsPolicy: '',
-                  );
-                },
-              ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: SizedBox(
+                  height: 260,
+                  child: ListView.builder(
+                      itemCount: productsList.length,
+                      scrollDirection: Axis.horizontal,
+                      // physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (_, index) {
+                        return ProductNewSales(
+                          products: productsList[index],
+                        );
+                      })),
             ),
           ],
         ),
@@ -161,6 +143,10 @@ class SearchResultScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         // Handle Filter action here
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FilterTab()));
                       },
                       child: Column(
                         children: [

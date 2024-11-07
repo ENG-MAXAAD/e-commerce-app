@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gap/gap.dart';
+import 'package:myapp_ecommerce/modal/helpers/product_helper.dart';
+import 'package:myapp_ecommerce/modal/products.dart';
 import 'package:myapp_ecommerce/screens/cartScreen.dart';
 import 'package:myapp_ecommerce/screens/productDetial.dart';
 import 'package:myapp_ecommerce/screens/searchScreen.dart';
@@ -144,6 +146,31 @@ class _HomeState extends State<Home> {
 
 // HomeScreen contains your main home content
 class HomeScreen extends StatelessWidget {
+  // Define a product instance
+  // final Products product = Products(
+  //   imageUrl: 'assets/p3.png',
+  //   title: 'Proudct1',
+  //   price: '\$102',
+  //   originalPrice: '\$199',
+  //   discount: '15% OFF',
+  //   rating: '4.3',
+  //   reviewCount: '41',
+  //   isNew: true,
+  //   thumbnailImages: [
+  //     'assets/product/pth1.png',
+  //     'assets/product/pth2.png',
+  //     'assets/product/pth3.png',
+  //   ],
+  //   description: 'This is a premium slim-fit pant...',
+  //   information: [
+  //     'Fabric: Cotton',
+  //     'Fit: Slim',
+  //     'Color: Beige',
+  //   ],
+  //   productDetails: 'Detailed product description goes here.',
+  //   shippingInfo: 'Ships within 3-5 business days.',
+  //   returnsPolicy: 'Free returns within 30 days.',
+  // );
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -354,62 +381,18 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
-              height: 260,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  ProductNewSales(
-                    imageUrl: 'assets/product/p1.jpeg',
-                    title: 'Premium Slim Fit Beige Color Twill Pant',
-                    price: '\$102',
-                    originalPrice: '\$199',
-                    discount: '15% OFF',
-                    rating: '4.3',
-                    reviewCount: '41',
-                    isNew: true,
-                    thumbnailImages: [
-                      'assets/product/pth1.png',
-                      'assets/product/pth2.png',
-                      'assets/product/pth3.png'
-                    ],
-                    description: 'This is a premium slim-fit pant...',
-                    information: [
-                      'Fabric: Cotton',
-                      'Fit: Slim',
-                      'Color: Beige'
-                    ],
-                    productDetails: 'Detailed product description goes here.',
-                    shippingInfo: 'Ships within 3-5 business days.',
-                    returnsPolicy: 'Free returns within 30 days.',
-                  ),
-                  ProductNewSales(
-                    imageUrl: 'assets/p3.png',
-                    title: 'Premium Slim Fit Beige Color Twill Pant',
-                    price: '\68',
-                    originalPrice: '\$70.25',
-                    discount: '15% OFF',
-                    rating: '4.3',
-                    reviewCount: '41',
-                    isNew: true,
-                    thumbnailImages: [
-                      'assets/p1.png',
-                      'assets/p2.png',
-                      'assets/p3.png'
-                    ],
-                    description: 'This is a premium slim-fit pant...',
-                    information: [
-                      'Fabric: Cotton',
-                      'Fit: Slim',
-                      'Color: Beige'
-                    ],
-                    productDetails: 'Detailed product description goes here.',
-                    shippingInfo: 'Ships within 3-5 business days.',
-                    returnsPolicy: 'Free returns within 30 days.',
-                  )
-                ],
-              ),
-            ),
+                height: 260,
+                child: ListView.builder(
+                    itemCount: productsList.length,
+                    scrollDirection: Axis.horizontal,
+                    // physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (_, index) {
+                      return ProductNewSales(
+                        products: productsList[index],
+                      );
+                    })),
           ),
+          Gap(10),
         ],
       ),
     );

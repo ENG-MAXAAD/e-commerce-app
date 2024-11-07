@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ecommerce/screens/login.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../Components/header/app_bar.dart';
 import 'home.dart';
 
 class OtpScreen extends StatelessWidget {
@@ -16,37 +17,8 @@ class OtpScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(56.0),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x0F4B5563),
-                  offset: Offset(0, 6),
-                  blurRadius: 12.0,
-                  spreadRadius: 0,
-                ),
-              ],
-            ),
-            child: AppBar(
-              title: const Text(
-                'Enter OTP',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              backgroundColor: Colors.white,
-              elevation: 0,
-              foregroundColor: Colors.black,
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-          ),
-        ),
+        appBar: AppHeader()
+            .buildPreferredSize(context, "Enter OTP", Icons.arrow_back),
         body: SingleChildScrollView(
           child: Container(
             child: Padding(

@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ecommerce/screens/cartScreen.dart';
 
+import '../Components/PrdoductCardWidget.dart';
 import '../Components/ProductNewSales.dart';
 import '../Components/Thumbnail.dart';
 import 'RatingAndReviewScreen.dart';
@@ -10,6 +11,7 @@ import 'checkoutScreen.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final String title;
+  final String imageUrl;
   final String price;
   final String originalPrice;
   final String discount;
@@ -38,6 +40,7 @@ class ProductDetailsScreen extends StatefulWidget {
     required this.productDetails,
     required this.shippingInfo,
     required this.returnsPolicy,
+    required this.imageUrl,
   }) : super(key: key);
 
   @override
@@ -80,7 +83,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     style: GoogleFonts.inter(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: Colors.black,
+                      color: Color(0xff1F2937),
                     ),
                   ),
                   IconButton(
@@ -102,7 +105,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           : 'assets/placeholder.png',
                       height: 50,
                       width: 50,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -155,17 +158,27 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   childAspectRatio: 1,
                 ),
                 children: [
-                  _buildShareOption(Icons.link, "Copy Link", Colors.blue),
-                  _buildShareOption(Icons.email, "Gmail", Colors.red),
-                  // _buildShareOption(Icons.whatsapp, "WhatsApp", Colors.green),
                   _buildShareOption(
-                      Icons.drive_file_move, "Drive", Colors.orange),
+                      'assets/product/links/link.png', "Copy Link"),
+                  _buildShareOption('assets/product/links/gmail.png', "Gmail"),
                   _buildShareOption(
-                      Icons.message, "Messages", Colors.blueAccent),
+                      'assets/product/links/whatsapp.png', "WhatsApp"),
                   _buildShareOption(
-                      Icons.linked_camera, "LinkedIn", Colors.blue[700]!),
-                  _buildShareOption(Icons.facebook, "Facebook", Colors.indigo),
-                  _buildShareOption(Icons.more_horiz, "More", Colors.grey),
+                    'assets/product/links/g-drive.png',
+                    "Drive",
+                  ),
+                  _buildShareOption(
+                    'assets/product/links/fb_messenger.png',
+                    "Messages",
+                  ),
+                  _buildShareOption(
+                    'assets/product/links/linkedin.png',
+                    "LinkedIn",
+                  ),
+                  _buildShareOption(
+                      'assets/product/links/Facebook.png', "Facebook"),
+                  _buildShareOption(
+                      'assets/product/links/more-circle.png', "More"),
                 ],
               ),
             ],
@@ -176,18 +189,28 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   }
 
 // Helper to create share options with enhanced icon colors
-  Widget _buildShareOption(IconData icon, String label, Color iconColor) {
+  Widget _buildShareOption(
+    String imagePath,
+    String label,
+  ) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        CircleAvatar(
-          backgroundColor: iconColor.withOpacity(0.2),
-          child: Icon(icon, color: iconColor),
+        Padding(
+          padding: const EdgeInsets.all(8.0), // Adjust padding as needed
+          child: Image.asset(
+            imagePath,
+            // color:
+            //     iconColor, // Applies color tint to the asset image if needed
+            width: 24, // Adjust width and height for your design
+            height: 24,
+          ),
         ),
         const SizedBox(height: 8),
         Text(
           label,
-          style: GoogleFonts.inter(fontSize: 12, color: Colors.black),
+          style:
+              GoogleFonts.inter(fontSize: 12, color: const Color(0xff1F2937)),
           textAlign: TextAlign.center,
         ),
       ],
@@ -254,9 +277,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
-                      widget.thumbnailImages.isNotEmpty
-                          ? widget.thumbnailImages[0]
-                          : 'assets/placeholder.png',
+                      widget.imageUrl,
                       height: 300,
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -391,10 +412,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(
-                      Icons.remove,
+                    icon: Image.asset(
+                      'assets/product/Minus.png',
                       color: Color(0xff4F5159),
-                      size: 24,
                     ),
                     onPressed: _decrementQuantity,
                   ),
@@ -403,14 +423,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     style: GoogleFonts.inter(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: Colors.black,
+                      color: Color(0xff121212),
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(
-                      Icons.add,
+                    icon: Image.asset(
+                      'assets/product/Add.png',
                       color: Color(0xff4F5159),
-                      size: 24,
                     ),
                     onPressed: _incrementQuantity,
                   ),
@@ -625,54 +644,38 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    ProductNewSales(
+                    ProductCard(
                       imageUrl: 'assets/p1.png',
-                      title: 'Premium Slim Fit Beige Color Twill Pant',
-                      price: '\$102',
-                      originalPrice: '\$199',
+                      title: 'Ash Printed Half Sleeve Hawaiian Shirt',
+                      price: '\$68',
+                      originalPrice: '\$80.25',
                       discount: '15% OFF',
-                      rating: '4.3',
-                      reviewCount: '41',
-                      isNew: true,
-                      thumbnailImages: [
-                        'assets/p1.png',
-                        'assets/p2.png',
-                        'assets/p3.png'
-                      ],
-                      description: 'This is a premium slim-fit pant...',
-                      information: [
-                        'Fabric: Cotton',
-                        'Fit: Slim',
-                        'Color: Beige'
-                      ],
-                      productDetails: 'Detailed product description goes here.',
-                      shippingInfo: 'Ships within 3-5 business days.',
-                      returnsPolicy: 'Free returns within 30 days.',
+                      rating: '4.8',
+                      reviewCount: '692',
+                      isTopSaller: true,
                     ),
-                    ProductNewSales(
-                      imageUrl: 'assets/p1.png',
-                      title: 'Premium Slim Fit Beige Color Twill Pant',
-                      price: '\$102',
-                      originalPrice: '\$199',
-                      discount: '15% OFF',
-                      rating: '4.3',
-                      reviewCount: '41',
-                      isNew: false,
-                      thumbnailImages: [
-                        'assets/p1.png',
-                        'assets/p2.png',
-                        'assets/p3.png'
-                      ],
-                      description: 'This is a premium slim-fit pant...',
-                      information: [
-                        'Fabric: Cotton',
-                        'Fit: Slim',
-                        'Color: Beige'
-                      ],
-                      productDetails: 'Detailed product description goes here.',
-                      shippingInfo: 'Ships within 3-5 business days.',
-                      returnsPolicy: 'Free returns within 30 days.',
-                    )
+                    const Gap(8),
+                    ProductCard(
+                      imageUrl: 'assets/p2.png',
+                      title: 'Ultra Slim Fit Full Sleeve Shirt',
+                      price: '\$42',
+                      originalPrice: '\$60.00',
+                      discount: '30% OFF',
+                      rating: '4.5',
+                      reviewCount: '320',
+                      isTopSaller: false,
+                    ),
+                    const Gap(8),
+                    ProductCard(
+                      imageUrl: 'assets/p3.png',
+                      title: 'Maroon Casual Shirt',
+                      price: '\$63',
+                      originalPrice: '\$75.00',
+                      discount: '20% OFF',
+                      rating: '4.6',
+                      reviewCount: '457',
+                      isTopSaller: true,
+                    ),
                   ],
                 ),
               ),
