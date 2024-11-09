@@ -137,7 +137,7 @@ class _RatingAndReviewsScreenState extends State<RatingAndReviewsScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Color(0xffEFF6FF),
+                color: Color(0xffEFF6FF).withOpacity(0.4),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(

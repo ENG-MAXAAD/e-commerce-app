@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light(),
-      home: LoginScreen(),
+      // home: LoginScreen(),
       // home: SignUpScreen(),
       // home: ResetPassword(),
       // home: OtpScreen(),
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
       // home: ProfileScreen(),
       // home: EditProfileScreen(),
       // home: ChangePasswordScreen(),
-      // home: NotificationSettingsScreen(),
+      home: NotificationSettingsScreen(),
       // home: LanguageSelectionScreen(),
       // home: TermsOfServiceScreen(),
       // home: SplashScreen(),

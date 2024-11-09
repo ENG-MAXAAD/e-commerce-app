@@ -61,10 +61,10 @@ final List<Products> productsList = [
     reviewCount: '67',
     isNew: true,
     thumbnailImages: [
-      'assets/product/pth7.png',
-      'assets/product/pth8.png',
-      'assets/product/pth9.png',
-      'assets/product/pth9.png',
+      'assets/product/pth2.png',
+      'assets/product/pth2.png',
+      'assets/product/pth1.png',
+      'assets/product/pth1.png',
     ],
     description: 'An elegant dress perfect for events...',
     information: [

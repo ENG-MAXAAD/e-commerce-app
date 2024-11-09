@@ -40,7 +40,6 @@ class ProductNewSales extends StatelessWidget {
       },
       child: Container(
         width: 154,
-        height: 264,
         margin: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +53,7 @@ class ProductNewSales extends StatelessWidget {
                   child: Image.asset(
                     products.imageUrl,
                     width: 154,
-                    height: 164, // Fixed height to control overflow
+                    height: 174, // Fixed height to control overflow
                     fit: BoxFit.cover,
                   ),
                 ),

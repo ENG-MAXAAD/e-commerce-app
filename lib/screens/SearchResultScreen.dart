@@ -215,7 +215,7 @@ class SearchResultScreen extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 2),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -241,7 +241,12 @@ class SearchResultScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const Gap(16),
+              const Gap(12),
+              Divider(
+                thickness: 1,
+                color: Color(0xffE9E9EA),
+              ),
+              // const Gap(12),
               ListTile(
                 title: Text(
                   "Price - High to Low",
