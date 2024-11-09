@@ -8,17 +8,20 @@ class Thumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: 77, // Adjusted width to better fit the design
-        height: 84, // Adjusted height for aspect ratio alignment
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.grey.shade300),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Image.asset(imagePath, fit: BoxFit.cover),
+    return Padding(
+      padding: const EdgeInsets.only(left: 5.0),
+      child: Expanded(
+        child: Container(
+          width: 77, // Adjusted width to better fit the design
+          height: 84, // Adjusted height for aspect ratio alignment
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.grey.shade300),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(imagePath, fit: BoxFit.cover),
+          ),
         ),
       ),
     );

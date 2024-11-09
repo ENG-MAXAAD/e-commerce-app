@@ -57,15 +57,15 @@ class ProductCard extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(4),
+                      color: Color(0xffFD7E14),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
                       "Top Seller",
-                      style: TextStyle(
+                      style: GoogleFonts.spaceGrotesk(
                         color: Colors.white,
                         fontSize: 10,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),

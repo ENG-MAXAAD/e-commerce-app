@@ -63,10 +63,10 @@ class ProductNewSales extends StatelessWidget {
                     left: 6,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 3),
+                          horizontal: 5, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(4),
+                        color: Color(0xff121212),
+                        borderRadius: BorderRadius.circular(100),
                       ),
                       child: const Text(
                         "New",

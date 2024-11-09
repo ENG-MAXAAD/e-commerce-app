@@ -274,14 +274,60 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             Center(
               child: Column(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      widget.imageUrl,
-                      height: 300,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      // Background image container
+                      Container(
+                        height: 278,
+                        width: 345,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 8,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            widget.imageUrl,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      // Left navigation button
+                      Positioned(
+                        left: 10,
+                        child: GestureDetector(
+                          onTap: () {
+                            // Add your left navigation logic here
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            child: Image.asset('assets/product/arrow-left.png',
+                                color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      // Right navigation button
+                      Positioned(
+                        right: 10,
+                        child: GestureDetector(
+                          onTap: () {
+                            // Add your right navigation logic here
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            child: Image.asset('assets/product/arrow-right.png',
+                                color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 8),
                   Row(

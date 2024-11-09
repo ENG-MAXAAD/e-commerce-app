@@ -3,8 +3,15 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ecommerce/screens/home.dart';
 
-class RatingAndReviewsScreen extends StatelessWidget {
+class RatingAndReviewsScreen extends StatefulWidget {
   const RatingAndReviewsScreen({Key? key}) : super(key: key);
+
+  @override
+  _RatingAndReviewsScreenState createState() => _RatingAndReviewsScreenState();
+}
+
+class _RatingAndReviewsScreenState extends State<RatingAndReviewsScreen> {
+  int selectedRating = -1; // Tracks the currently selected rating
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +24,10 @@ class RatingAndReviewsScreen extends StatelessWidget {
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Color(0x0F4B5563), // Equivalent to #4B55630F
-                offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
-                blurRadius: 12.0, // Matches the 12px blur radius
-                spreadRadius: 0, // Matches the 0px spread
+                color: Color(0x0F4B5563),
+                offset: Offset(0, 6),
+                blurRadius: 12.0,
+                spreadRadius: 0,
               ),
             ],
           ),
@@ -31,7 +38,7 @@ class RatingAndReviewsScreen extends StatelessWidget {
                   GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w500),
             ),
             backgroundColor: Colors.white,
-            elevation: 0, // Remove elevation to avoid double shadow
+            elevation: 0,
             foregroundColor: Colors.black,
             leading: IconButton(
               icon: Image.asset(
@@ -43,7 +50,7 @@ class RatingAndReviewsScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Home(), // Your destination screen
+                    builder: (context) => Home(),
                   ),
                 );
               },
@@ -74,7 +81,6 @@ class RatingAndReviewsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Filter and Sort By Row
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -85,7 +91,7 @@ class RatingAndReviewsScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       Image.asset(
-                        'assets/filter.png', // Use provided filter asset
+                        'assets/filter.png',
                         width: 24,
                         height: 24,
                       ),
@@ -108,7 +114,7 @@ class RatingAndReviewsScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       Image.asset(
-                        'assets/sort.png', // Use provided sort asset
+                        'assets/sort.png',
                         width: 24,
                         height: 24,
                       ),
@@ -276,60 +282,82 @@ class RatingAndReviewsScreen extends StatelessWidget {
   void showFilterDialog(BuildContext context) {
     showModalBottomSheet(
       context: context,
+      backgroundColor: Colors.white,
       builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 44),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Filter",
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Filter",
+                          style: GoogleFonts.inter(
+                              fontSize: 16,
+                              color: Color(0xff393C44),
+                              fontWeight: FontWeight.w500)),
+                      IconButton(
+                        icon: const Icon(Icons.close),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 1,
+                    color: Color(0xffE9E9EA),
+                  ),
+                  const SizedBox(height: 16),
+                  Text("Rating",
                       style: GoogleFonts.inter(
                           fontSize: 16,
                           color: Color(0xff393C44),
                           fontWeight: FontWeight.w500)),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () => Navigator.pop(context),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 14,
+                    runSpacing: 10,
+                    children: List.generate(5, (index) {
+                      return FilterChip(
+                        showCheckmark: false,
+                        label: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: List.generate(index + 1, (i) {
+                            return Icon(
+                              Icons.star,
+                              color: Colors.orange,
+                              size: 16,
+                            );
+                          }),
+                        ),
+                        backgroundColor: Color(0xFFF5FAFF),
+                        selectedColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          side: BorderSide(
+                            color: selectedRating == index
+                                ? Color(0xFF2563EB)
+                                : Color(0xFFE8E8E8),
+                            width: selectedRating == index ? 0.9 : 0.5,
+                          ),
+                        ),
+                        selected: selectedRating == index,
+                        onSelected: (bool selected) {
+                          setState(() {
+                            selectedRating = selected ? index : -1;
+                          });
+                        },
+                      );
+                    }),
                   ),
                 ],
               ),
-              Divider(
-                thickness: 1,
-                color: Color(0xffE9E9EA),
-              ),
-              const Gap(16),
-              Text("Rating",
-                  style: GoogleFonts.inter(
-                      fontSize: 16,
-                      color: Colors.red,
-                      fontWeight: FontWeight.w500)),
-              const Gap(8),
-              Wrap(
-                spacing: 8,
-                children: List.generate(5, (index) {
-                  return FilterChip(
-                    label: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: List.generate(5, (i) {
-                        return Icon(
-                          Icons.star,
-                          color:
-                              i <= index ? Colors.orange : Colors.grey.shade300,
-                          size: 16,
-                        );
-                      }),
-                    ),
-                    selected: false,
-                    onSelected: (bool selected) {},
-                  );
-                }),
-              ),
-            ],
-          ),
+            );
+          },
         );
       },
     );

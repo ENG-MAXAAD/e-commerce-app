@@ -6,7 +6,7 @@ class SuccessBottomSheet extends StatelessWidget {
   final String message;
   final String buttonText;
   final VoidCallback onButtonPressed;
-  final String checkmarkImagePath; // Dynamic image path
+  final String checkmarkImagePath;
 
   const SuccessBottomSheet({
     Key? key,
@@ -14,7 +14,7 @@ class SuccessBottomSheet extends StatelessWidget {
     required this.message,
     required this.buttonText,
     required this.onButtonPressed,
-    this.checkmarkImagePath = 'assets/badge-check.png', // Default image path
+    this.checkmarkImagePath = 'assets/badge-check.png',
   }) : super(key: key);
 
   @override
@@ -44,7 +44,7 @@ class SuccessBottomSheet extends StatelessWidget {
                 style: GoogleFonts.inter(
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xff1A1C1E),
+                  color: const Color(0xff1A1C1E),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -56,7 +56,7 @@ class SuccessBottomSheet extends StatelessWidget {
                 style: GoogleFonts.inter(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: Color(0xff7B7D82),
+                  color: const Color(0xff7B7D82),
                 ),
               ),
               const SizedBox(height: 40),
@@ -81,7 +81,7 @@ class SuccessBottomSheet extends StatelessWidget {
             ],
           ),
         ),
-        // Dynamic Checkmark Icon positioned outside the top of the bottom sheet
+        // Dynamic Checkmark Icon with shadow
         Positioned(
           top: 1,
           child: Container(
@@ -89,12 +89,23 @@ class SuccessBottomSheet extends StatelessWidget {
             height: 91,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
+              color: const Color(0xff2563EB),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF2563EB)
+                      .withOpacity(0.5), // Shadow color with opacity
+                  offset: const Offset(0, 24), // Shadow offset
+                  blurRadius: 34, // Shadow blur
+                  spreadRadius: -10, // Shadow spread
+                ),
+              ],
             ),
             child: CircleAvatar(
               radius: 32,
-              backgroundColor: Color(0xff2563EB),
+              backgroundColor:
+                  Colors.transparent, // Background color of the circle
               child: Image.asset(
-                checkmarkImagePath, // Dynamic image path
+                checkmarkImagePath,
                 color: Colors.white,
               ),
             ),

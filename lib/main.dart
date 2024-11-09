@@ -42,13 +42,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light(),
-      // home: LoginScreen(),
+      home: LoginScreen(),
       // home: SignUpScreen(),
       // home: ResetPassword(),
       // home: OtpScreen(),
       // home: CreateNewPassword(),
       // home: ResetPasswordForNum(),
-      home: Home(),
+      // home: Home(),
       // home: ProductDetailsScreen(),
       // home: SearchScreen(),
       // home: SearchResultScreen(),
