@@ -19,7 +19,7 @@ class FlashSaleBanner extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.asset(
-              'assets/flash.png', // Replace with your image path
+              'assets/flash1.png', // Replace with your image path
               width: double.infinity,
               height: 200,
               fit: BoxFit.cover,
@@ -30,8 +30,8 @@ class FlashSaleBanner extends StatelessWidget {
             width: double.infinity,
             height: 200,
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.6),
-              borderRadius: BorderRadius.circular(8),
+              color: Color(0xff16161E).withOpacity(0.5),
+              borderRadius: BorderRadius.circular(0),
             ),
           ),
           // Text and Countdown Timer
@@ -40,10 +40,12 @@ class FlashSaleBanner extends StatelessWidget {
             children: [
               Text(
                 "Super Flash Sale\n50% Off",
-                style: GoogleFonts.grandstander(
+                style: TextStyle(
                   color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 24,
+                  fontFamily: 'GrandsExtended',
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w500,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -55,7 +57,7 @@ class FlashSaleBanner extends StatelessWidget {
                   if (time == null) {
                     return Text(
                       'Sale Ended',
-                      style: TextStyle(
+                      style: GoogleFonts.inter(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -67,12 +69,14 @@ class FlashSaleBanner extends StatelessWidget {
                     children: [
                       FlashSaleTimerBox(
                           time: time.hours?.toString().padLeft(2, '0') ?? '00'),
-                      const Text(" : ",
-                          style: TextStyle(color: Colors.white, fontSize: 22)),
+                      Text(" : ",
+                          style: GoogleFonts.inter(
+                              color: Colors.white, fontSize: 18)),
                       FlashSaleTimerBox(
                           time: time.min?.toString().padLeft(2, '0') ?? '00'),
-                      const Text(" : ",
-                          style: TextStyle(color: Colors.white, fontSize: 22)),
+                      Text(" : ",
+                          style: GoogleFonts.inter(
+                              color: Colors.white, fontSize: 18)),
                       FlashSaleTimerBox(
                           time: time.sec?.toString().padLeft(2, '0') ?? '00'),
                     ],
