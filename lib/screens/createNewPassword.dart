@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ecommerce/screens/login.dart';
 import '../Components/CustomSuceesBottom.dart';
 import '../Components/CustomTextField.dart';
+import '../Components/header/app_bar.dart';
 import 'home.dart';
 
 class CreateNewPassword extends StatefulWidget {
@@ -23,37 +24,8 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(56.0),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x0F4B5563), // Equivalent to #4B55630F
-                  offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
-                  blurRadius: 12.0, // Matches the 12px blur radius
-                  spreadRadius: 0, // Matches the 0px spread
-                ),
-              ],
-            ),
-            child: AppBar(
-              title: const Text(
-                'Create New Password',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              backgroundColor: Colors.white,
-              elevation: 0,
-              foregroundColor: Colors.black,
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-          ),
-        ),
+        appBar: AppHeader().buildPreferredSize(
+            context, "Create New Password", Icons.arrow_back),
         body: Container(
           color: Colors.white,
           child: Padding(

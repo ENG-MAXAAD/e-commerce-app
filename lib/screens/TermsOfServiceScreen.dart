@@ -1,45 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Components/header/app_bar.dart';
+
 class TermsOfServiceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(56.0),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Color(0x0F4B5563), // Equivalent to #4B55630F
-                offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
-                blurRadius: 12.0, // Matches the 12px blur radius
-                spreadRadius: 0, // Matches the 0px spread
-              ),
-            ],
-          ),
-          child: AppBar(
-            title: Text(
-              'Term Of Service',
-              style: GoogleFonts.inter(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff23262F),
-              ),
-            ),
-            backgroundColor: Colors.white,
-            elevation: 0,
-            foregroundColor: Colors.black,
-            centerTitle: false,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ),
-        ),
-      ),
+      appBar: AppHeader()
+          .buildPreferredSize(context, "Term Of Service", Icons.arrow_back),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14),
         child: Column(

@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
+import '../Components/header/app_bar.dart';
 import 'otp.dart';
 
 class ResetPasswordForNum extends StatelessWidget {
@@ -14,37 +15,8 @@ class ResetPasswordForNum extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(56.0),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x0F4B5563), // Equivalent to #4B55630F
-                  offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
-                  blurRadius: 12.0, // Matches the 12px blur radius
-                  spreadRadius: 0, // Matches the 0px spread
-                ),
-              ],
-            ),
-            child: AppBar(
-              title: const Text(
-                'Reset Password',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              backgroundColor: Colors.white,
-              elevation: 0,
-              foregroundColor: Colors.black,
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-          ),
-        ),
+        appBar: AppHeader()
+            .buildPreferredSize(context, "Reset Password", Icons.arrow_back),
         body: SingleChildScrollView(
           child: Container(
             color: Colors.white,

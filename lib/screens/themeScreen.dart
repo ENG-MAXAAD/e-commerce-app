@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Components/header/app_bar.dart';
+
 class ThemeSelectionScreen extends StatefulWidget {
   @override
   _ThemeSelectionScreenState createState() => _ThemeSelectionScreenState();
@@ -13,39 +15,8 @@ class _ThemeSelectionScreenState extends State<ThemeSelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(56.0),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Color(0x0F4B5563), // Equivalent to #4B55630F
-                offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
-                blurRadius: 12.0, // Matches the 12px blur radius
-                spreadRadius: 0, // Matches the 0px spread
-              ),
-            ],
-          ),
-          child: AppBar(
-            title: Text(
-              'Theme',
-              style: GoogleFonts.inter(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: Colors.black,
-              ),
-            ),
-            backgroundColor: Colors.white,
-            elevation: 0, // Remove shadow beneath AppBar
-            foregroundColor: Colors.black,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ),
-        ),
-      ),
+      appBar:
+          AppHeader().buildPreferredSize(context, "Theme", Icons.arrow_back),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 32),
         child: Column(

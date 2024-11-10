@@ -3,6 +3,8 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ecommerce/screens/resetPasswordForNumber.dart';
 
+import '../Components/header/app_bar.dart';
+
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
 
@@ -12,41 +14,8 @@ class ResetPassword extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(56.0),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x0F4B5563), // Equivalent to #4B55630F
-                  offset: Offset(0, 6), // x = 0, y = 6 for vertical shadow
-                  blurRadius: 12.0, // Matches the 12px blur radius
-                  spreadRadius: 0, // Matches the 0px spread
-                ),
-              ],
-            ),
-            child: AppBar(
-              title: Text(
-                'Reset Password',
-                style: GoogleFonts.inter(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              backgroundColor: Colors.white,
-              elevation: 0, // Remove AppBar default shadow
-              foregroundColor: Colors.black, // Set color for icons and text
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(
-                      context); // Navigate back when back arrow is pressed
-                },
-              ),
-            ),
-          ),
-        ),
+        appBar: AppHeader()
+            .buildPreferredSize(context, "Reset Password", Icons.arrow_back),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 24),
